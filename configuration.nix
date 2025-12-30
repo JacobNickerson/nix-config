@@ -93,6 +93,7 @@
     unzip
     btop
     yazi
+    psmisc
     (pkgs.callPackage ./modules/sddm-lake/theme {})
   ];
 

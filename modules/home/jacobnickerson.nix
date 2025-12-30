@@ -304,6 +304,341 @@
       '';
     };
 
+    vesktop = {
+      enable = true;
+
+      vencord.themes = {
+        modified-clearvision = ''
+            /**
+             * @name ClearVision V7 for BetterDiscord
+             * @author ClearVision Team
+             * @version 7.0.1
+             * @description Highly customizable theme for BetterDiscord.
+             * @source https://github.com/ClearVision/ClearVision-v7
+             * @website https://clearvision.github.io
+             * @invite dHaSxn3
+             */
+            /* IMPORT CSS */
+            @import url("https://clearvision.github.io/ClearVision-v7/main.css");
+            @import url("https://clearvision.github.io/ClearVision-v7/betterdiscord.css");
+            /* SETTINGS */
+            :root {
+              /* ACCENT COLORS */
+              --main-color: #2780e6; /* main accent color (hex, rgb or hsl) [default: #2780e6] */
+              --hover-color: #1e63b3; /* hover accent color (hex, rgb or hsl) [default: #1e63b3] */
+              --success-color: #43b581; /* positive accent color (hex, rgb or hsl) [default: #43b581] */
+              --danger-color: #982929; /* danger accent color (hex, rgb or hsl) [default: #982929] */
+              /* STATUS COLORS */
+              --online-color: #43b581; /* online status color (hex, rgb or hsl) [default: #43b581] */
+              --idle-color: #faa61a; /* idle status color (hex, rgb or hsl) [default: #faa61a] */
+              --dnd-color: #982929; /* dnd status color (hex, rgb or hsl) [default: #982929] */
+              --streaming-color: #593695; /* streaming status color (hex, rgb or hsl) [default: #593695] */
+              --offline-color: #808080; /* offline/invisible status color (hex, rgb or hsl) [default: #808080] */
+              /* APP BACKGROUND */
+              --background-shading-percent: 100%; /* app background shading amount (0 for complete smoothness) [default: 100%] */
+              --background-image: url(https://i.imgur.com/bgmVeyt.jpg); /* app background image (link must be HTTPS) [default: url(https://clearvision.github.io/images/sapphire.jpg)]*/
+              --background-position: center; /* app background position [default: center] */
+              --background-size: cover; /* app background size (px) [default: cover] */
+              --background-attachment: fixed; /* app background attachment [default: fixed] */
+              --background-filter: saturate(calc(var(--saturation-factor, 1) * 1)); /* app background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: saturate(calc(var(--saturation-factor, 1) * 1))] */
+              /* USER POPOUT BACKGROUND */
+              --user-popout-image: var(--background-image); /* user popout background image (link must be HTTPS) (not applied to nitro users) [default: var(--background-image)] */
+              --user-popout-position: var(--background-position); /* user popout position [default: var(--background-position)] */
+              --user-popout-size: var(--background-size); /* user popout size (px) [default: var(--background-size)] */
+              --user-popout-attachment: var(--background-attachment); /* user popout background attachment [default: var(--background-attachment)] */
+              --user-popout-filter: var(--background-filter); /* user popout background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: var(--background-filter);] */
+              /* USER MODAL BACKGROUND */
+              --user-modal-image: var(--background-image); /* user modal background image (link must be HTTPS) (not applied to nitro users) [default: var(--background-image)] */
+              --user-modal-position: var(--background-position); /* user modal position [default: var(--background-position)] */
+              --user-modal-size: var(--background-size); /* user modal size (px) [default: var(--background-size)] */
+              --user-modal-attachment: var(--background-attachment); /* user modal background attachment [default: var(--background-attachment)] */
+              --user-modal-filter: var(--background-filter); /* user modal background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: var(--background-filter);] */
+              /* HOME ICON */
+              --home-icon: url(https://clearvision.github.io/icons/discord.svg); /* home button icon (link must be HTTPS) [default: url(https://clearvision.github.io/icons/discord.svg)]*/
+              --home-size: cover; /* home button icon size (px) [default:cover] */
+              /* FONTS */
+              --main-font: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif; /* main font for app (font must be installed) [default: gg sans, Helvetica Neue, Helvetica, Arial, sans-serif] */
+              --code-font: Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace; /* font for codeblocks (font must be installed) [default: Consolas, Liberation Mono, Menlo, Courier, monospace] */
+              /* CHANNEL COLORS */
+              --channel-normal: var(--interactive-normal); /* channel text color [default: var(--interactive-normal)] */
+              --channel-muted: var(--interactive-muted); /* muted channel text color [default: var(--interactive-muted)] */
+              --channel-hover: var(--interactive-hover); /* hovered channel text color [default: var(--interactive-hover)] */
+              --channel-selected: var(--interactive-active); /* selected channel text color [default: var(--interactive-active)] */
+              --channel-selected-bg: var(--main-color); /* selected channel background [default: var(--main-color)] */
+              --channel-unread: var(--main-color); /* unread channel text color [default: var(--main-color)] */
+              --channel-unread-hover: var(--hover-color); /* unread channel hover color [default: var(--hover-color)] */
+              /* ACCESSIBILITY */
+              --focus-color: var(--main-color); /* outline when pressing TAB key [default: var(--main-color)] */
+            }
+
+            /* THEME SPECIFIC SHADING */
+            /* LIGHT THEME */
+            :is(.theme-light, .theme-dark .theme-light) {
+              --background-shading: rgba(252, 252, 252, 0.3); /* app background shading color [default: rgba(252, 252, 252, 0.3)] */
+              --card-shading: rgba(252, 252, 252, 0.2); /* cards background shading color [default: rgba(252, 252, 252, 0.3)] */
+              --popout-shading: rgba(252, 252, 252, 0.6); /* popouts background shading color [default: rgba(252, 252, 252, 0.7)] */
+              --modal-shading: rgba(252, 252, 252, 0.4); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
+              --input-shading: rgba(0, 0, 0, 0.2); /* inputs background shading color [default: rgba(0, 0, 0, 0.6)] */
+              --normal-text: #36363c; /* text color [default: #36363c] */
+              --muted-text: #75757e; /* muted text color [default: #75757e] */
+            }
+
+            /* ASH THEME */
+            :is(.theme-dark, .theme-light .theme-dark) {
+              --background-shading: rgba(0, 0, 0, 0.4); /* app background shading color [default: rgba(0, 0, 0, 0.4)] */
+              --card-shading: rgba(0, 0, 0, 0.2); /* cards background shading color [default: rgba(0, 0, 0, 0.2)] */
+              --popout-shading: rgba(0, 0, 0, 0.6); /* popouts background shading color [default: rgba(0, 0, 0, 0.6)] */
+              --modal-shading: rgba(0, 0, 0, 0.4); /* modals background shading color [default: rgba(0, 0, 0, 0.4)] */
+              --input-shading: rgba(255, 255, 255, 0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
+              --normal-text: #d8d8db; /* text color [default: #d8d8db] */
+              --muted-text: #aeaeb4; /* muted text color [default: #aeaeb4] */
+            }
+
+            /* DARK THEME */
+            :is(.theme-darker, .theme-light .theme-darker) {
+              --background-shading: rgba(0, 0, 0, 0.6); /* app background shading color [default: rgba(0, 0, 0, 0.6)] */
+              --card-shading: rgba(0, 0, 0, 0.2); /* cards background shading color [default: rgba(0, 0, 0, 0.3)] */
+              --popout-shading: rgba(0, 0, 0, 0.6); /* popouts background shading color [default: rgba(0, 0, 0, 0.7)] */
+              --modal-shading: rgba(0, 0, 0, 0.4); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
+              --input-shading: rgba(255, 255, 255, 0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
+              --normal-text: #fbfbfb; /* text color [default: #fbfbfb] */
+              --muted-text: #94949c; /* muted text color [default: #94949c] */
+            }
+
+            /* ONYX THEME */
+            :is(.theme-midnight, .theme-light .theme-midnight) {
+              --background-shading: rgba(0, 0, 0, 0.4); /* app background shading color [default: rgba(0, 0, 0, 0.8)] */
+              --card-shading: rgba(0, 0, 0, 0.2); /* cards background shading color [default: rgba(0, 0, 0, 0.4)] */
+              --popout-shading: rgba(0, 0, 0, 0.6); /* popouts background shading color [default: rgba(0, 0, 0, 0.8)] */
+              --modal-shading: rgba(0, 0, 0, 0.4); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
+              --input-shading: rgba(255, 255, 255, 0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
+              --normal-text: #dcdcde; /* text color [default: #dcdcde] */
+              --muted-text: #86868e; /* muted text color [default: #86868e] */
+        '';
+      };
+      vencord.settings = {
+        autoUpdate = true;
+        autoUpdateNotification = true;
+        useQuickCss = true;
+        themeLinks = [];
+        eagerPatches = false;
+        enabledThemes = [ "modified-clearvision.css" ];
+        enableReactDevtools = false;
+        frameless = true;
+        transparent = true;
+        winCtrlQ = false;
+        disableMinSize = false;
+        winNativeTitleBar = false;
+
+        plugins = {
+          ChatInputButtonAPI.enabled = false;
+          CommandsAPI.enabled = true;
+          DynamicImageModalAPI.enabled = false;
+          MemberListDecoratorsAPI.enabled = false;
+          MessageAccessoriesAPI.enabled = true;
+          MessageDecorationsAPI.enabled = false;
+          MessageEventsAPI.enabled = false;
+          MessagePopoverAPI.enabled = false;
+          MessageUpdaterAPI.enabled = false;
+          ServerListAPI.enabled = false;
+          UserSettingsAPI.enabled = true;
+
+          AccountPanelServerProfile.enabled = false;
+          AlwaysAnimate.enabled = false;
+          AlwaysExpandRoles.enabled = false;
+          AlwaysTrust.enabled = false;
+          AnonymiseFileNames.enabled = false;
+          AppleMusicRichPresence.enabled = false;
+          "WebRichPresence (arRPC)".enabled = false;
+          BetterFolders.enabled = false;
+          BetterGifAltText.enabled = false;
+          BetterGifPicker.enabled = false;
+          BetterNotesBox.enabled = false;
+          BetterRoleContext.enabled = false;
+          BetterRoleDot.enabled = false;
+          BetterSessions.enabled = false;
+          BetterSettings.enabled = false;
+          BetterUploadButton.enabled = false;
+          BiggerStreamPreview.enabled = false;
+          BlurNSFW.enabled = false;
+          CallTimer.enabled = false;
+          ClearURLs.enabled = false;
+          ClientTheme.enabled = false;
+          ColorSighted.enabled = false;
+          ConsoleJanitor.enabled = false;
+          ConsoleShortcuts.enabled = false;
+          CopyEmojiMarkdown.enabled = false;
+          CopyFileContents.enabled = false;
+          CopyStickerLinks.enabled = false;
+          CopyUserURLs.enabled = false;
+          CrashHandler.enabled = true;
+          CtrlEnterSend.enabled = false;
+          CustomIdle.enabled = false;
+          CustomRPC.enabled = false;
+          Dearrow.enabled = false;
+          Decor.enabled = false;
+          DisableCallIdle.enabled = false;
+          DontRoundMyTimestamps.enabled = false;
+          Experiments.enabled = false;
+          ExpressionCloner.enabled = false;
+          F8Break.enabled = false;
+          FakeNitro.enabled = false;
+          FakeProfileThemes.enabled = false;
+          FavoriteEmojiFirst.enabled = false;
+          FavoriteGifSearch.enabled = false;
+          FixCodeblockGap.enabled = false;
+          FixImagesQuality.enabled = false;
+          FixSpotifyEmbeds.enabled = false;
+          FixYoutubeEmbeds.enabled = false;
+          ForceOwnerCrown.enabled = false;
+          FriendInvites.enabled = false;
+          FriendsSince.enabled = false;
+          FullSearchContext.enabled = false;
+          FullUserInChatbox.enabled = false;
+          GameActivityToggle.enabled = false;
+          GifPaste.enabled = false;
+          GreetStickerPicker.enabled = false;
+          HideMedia.enabled = false;
+          iLoveSpam.enabled = false;
+          IgnoreActivities.enabled = false;
+          ImageFilename.enabled = false;
+          ImageLink.enabled = false;
+          ImageZoom.enabled = false;
+          ImplicitRelationships.enabled = false;
+          InvisibleChat.enabled = false;
+          IrcColors.enabled = false;
+          KeepCurrentChannel.enabled = false;
+          LastFMRichPresence.enabled = false;
+          LoadingQuotes.enabled = false;
+          MemberCount.enabled = false;
+          MentionAvatars.enabled = false;
+          MessageClickActions.enabled = false;
+          MessageLatency.enabled = false;
+          MessageLinkEmbeds.enabled = false;
+          MessageLogger.enabled = false;
+          MessageTags.enabled = false;
+          MutualGroupDMs.enabled = false;
+          NewGuildSettings.enabled = false;
+          NoBlockedMessages.enabled = false;
+          NoDevtoolsWarning.enabled = false;
+          NoF1.enabled = false;
+          NoMaskedUrlPaste.enabled = false;
+          NoMosaic.enabled = false;
+          NoOnboardingDelay.enabled = false;
+          NoPendingCount.enabled = false;
+          NoProfileThemes.enabled = false;
+          NoReplyMention.enabled = false;
+          NoServerEmojis.enabled = false;
+          NoTypingAnimation.enabled = false;
+          NoUnblockToJump.enabled = false;
+          NormalizeMessageLinks.enabled = false;
+          NotificationVolume.enabled = false;
+          OnePingPerDM.enabled = false;
+          oneko.enabled = false;
+          OpenInApp.enabled = false;
+          OverrideForumDefaults.enabled = false;
+          PauseInvitesForever.enabled = false;
+          PermissionFreeWill.enabled = false;
+          PermissionsViewer.enabled = false;
+          petpet.enabled = false;
+          PictureInPicture.enabled = false;
+          PinDMs.enabled = false;
+          PlainFolderIcon.enabled = false;
+          PlatformIndicators.enabled = false;
+          PreviewMessage.enabled = false;
+          QuickMention.enabled = false;
+          QuickReply.enabled = false;
+          ReactErrorDecoder.enabled = false;
+          ReadAllNotificationsButton.enabled = false;
+          RelationshipNotifier.enabled = false;
+          ReplaceGoogleSearch.enabled = false;
+          ReplyTimestamp.enabled = false;
+          RevealAllSpoilers.enabled = false;
+          ReverseImageSearch.enabled = false;
+          ReviewDB.enabled = false;
+          RoleColorEverywhere.enabled = false;
+          SecretRingToneEnabler.enabled = false;
+          Summaries.enabled = false;
+          SendTimestamps.enabled = false;
+          ServerInfo.enabled = false;
+          ServerListIndicators.enabled = false;
+          ShikiCodeblocks.enabled = false;
+          ShowAllMessageButtons.enabled = false;
+          ShowConnections.enabled = false;
+          ShowHiddenChannels.enabled = false;
+          ShowHiddenThings.enabled = false;
+          ShowMeYourName.enabled = false;
+          ShowTimeoutDuration.enabled = false;
+          SilentMessageToggle.enabled = false;
+          SilentTyping.enabled = false;
+          SortFriendRequests.enabled = false;
+          SpotifyControls.enabled = false;
+          SpotifyCrack.enabled = false;
+          SpotifyShareCommands.enabled = false;
+          StartupTimings.enabled = false;
+          StickerPaste.enabled = false;
+          StreamerModeOnStream.enabled = false;
+          SuperReactionTweaks.enabled = false;
+          TextReplace.enabled = false;
+          ThemeAttributes.enabled = false;
+          Translate.enabled = false;
+          TypingIndicator.enabled = false;
+          TypingTweaks.enabled = false;
+          Unindent.enabled = false;
+          UnlockedAvatarZoom.enabled = false;
+          UnsuppressEmbeds.enabled = false;
+          UserMessagesPronouns.enabled = false;
+          UserVoiceShow.enabled = false;
+          USRBG.enabled = false;
+          ValidReply.enabled = false;
+          ValidUser.enabled = false;
+          VoiceChatDoubleClick.enabled = false;
+          VcNarrator.enabled = false;
+          VencordToolbox.enabled = false;
+          ViewIcons.enabled = false;
+          ViewRaw.enabled = false;
+          VoiceDownload.enabled = false;
+          VoiceMessages.enabled = false;
+          VolumeBooster.enabled = false;
+          WebKeybinds.enabled = true;
+          WebScreenShareFixes.enabled = true;
+          WhoReacted.enabled = false;
+          XSOverlay.enabled = false;
+          YoutubeAdblock.enabled = false;
+
+          BadgeAPI.enabled = true;
+
+          NoTrack = {
+            enabled = true;
+            disableAnalytics = true;
+          };
+
+          Settings = {
+            enabled = true;
+            settingsLocation = "aboveNitro";
+          };
+
+          DisableDeepLinks.enabled = true;
+          SupportHelper.enabled = true;
+          WebContextMenus.enabled = true;
+        };
+
+        notifications = {
+          timeout = 5000;
+          position = "bottom-right";
+          useNative = "not-focused";
+          logLimit = 50;
+        };
+
+        cloud = {
+          authenticated = false;
+          url = "https://api.vencord.dev/";
+          settingsSync = false;
+          settingsSyncVersion = 1760934920952;
+        };
+      };
+    };
+
     waybar = {
       enable = true;
     };

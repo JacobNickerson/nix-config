@@ -94,6 +94,9 @@
     btop
     yazi
     psmisc
+    bluez
+    brightnessctl
+    fzf
     (pkgs.callPackage ./modules/sddm-lake/theme {})
   ];
 
@@ -158,6 +161,7 @@
     noto-fonts
     noto-fonts-color-emoji
     nerd-fonts.roboto-mono
+    nerd-fonts._0xproto
     font-awesome
     (pkgs.callPackage ./modules/sddm-lake/font {})
   ];

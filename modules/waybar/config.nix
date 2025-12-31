@@ -134,7 +134,7 @@
     };
 
     "hyprland/workspaces" = {
-      format = "{icon}"; # or "{id}" or "{name} {icon}" etc
+      format = "{icon}";
       format-icons = {
         "1" = "一";
         "2" = "二";
@@ -147,10 +147,13 @@
         "9" = "九";
         "10"= "十"; 
       };
+      update-active-window = true;
       sort-by-number = true;
-      all-outputs = true;
       on-click = "activate";
       disable-scroll = false;
+      persistent-workspaces = {
+        "*" = 5;
+      };
     };
 
     "hyprland/window" = {

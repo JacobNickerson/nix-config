@@ -59,4 +59,17 @@
     padding: 3px 6px;
     font-size: 11px;
 }
+
+#workspaces button label {
+    padding: 0em 0.7em;
+    background-color: rgba(255,255,255,0);
+    border-radius: 0.3em;
+}
+
+#workspaces button.active label {
+    color: #00FF00;
+    font-weight: bold;
+    background-color: rgba(255,255,255,0.05);
+}
 ''
+

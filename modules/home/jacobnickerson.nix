@@ -599,12 +599,12 @@
           ViewRaw.enabled = false;
           VoiceDownload.enabled = false;
           VoiceMessages.enabled = false;
-          VolumeBooster.enabled = false;
+          VolumeBooster.enabled = true;
           WebKeybinds.enabled = true;
           WebScreenShareFixes.enabled = true;
           WhoReacted.enabled = false;
           XSOverlay.enabled = false;
-          YoutubeAdblock.enabled = false;
+          YoutubeAdblock.enabled = true;
 
           BadgeAPI.enabled = true;
 

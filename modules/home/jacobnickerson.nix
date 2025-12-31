@@ -45,6 +45,22 @@ in {
       rip         = "expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
     };
   };
+  # --SYSTEMD USER SERVICES--
+  systemd.user.services = {
+    swaync = {
+      Unit = {
+        Description = "Sway Notification Center daemon";
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
+        Restart = "on-failure";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
+  };
 
   # --PROGRAMS--
   programs = {

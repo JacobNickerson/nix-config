@@ -1,49 +1,54 @@
-{ config, pkgs, ... }:
-
-{
-  home.username = "jacobnickerson";
-  home.homeDirectory = "/home/jacobnickerson";
-
-  home.stateVersion = "26.05"; 
-  programs.home-manager.enable = true;
-
-  home.packages = with pkgs; [
-    bitwarden-cli
-    bitwarden-desktop
-    eza
-    fastfetch
-    heroic
+{ config, pkgs, ... }: let
+  imports = [
+    ../waybar/waybar.nix
   ];
+in {
+  inherit imports;
+  home = {
+    username = "jacobnickerson";
+    homeDirectory = "/home/jacobnickerson";
+    stateVersion = "26.05"; 
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
+    packages = with pkgs; [
+      bitwarden-cli
+      bitwarden-desktop
+      eza
+      fastfetch
+      heroic
+      playerctl
+    ];
 
-  home.shellAliases = {
-    ls   = "eza -al --color=always --group-directories-first --icons";
-    la   = "eza -a --color=always --group-directories-first --icons";
-    ll   = "eza -l --color=always --group-directories-first --icons";
-    lt   = "eza -aT --color=always --group-directories-first --icons";
-    ldot = "eza -a | grep -e '^\\.'";
-    tarnow      = "tar -acf ";
-    untar       = "tar -zxvf ";
-    wget        = "wget -c ";
-    psmem       = "ps auxf | sort -nr -k 4";
-    psmem10     = "ps auxf | sort -nr -k 4 | head -10";
-    dir         = "dir --color=auto";
-    vdir        = "vdir --color=auto";
-    grep        = "grep --color=auto";
-    fgrep       = "fgrep --color=auto";
-    egrep       = "egrep --color=auto";
-    hw          = "hwinfo --short";
-    big         = "expac -H M '%m\t%n' | sort -h | nl";
-    jctl        = "journalctl -p 3 -xb";
-    rip         = "expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
+
+    shellAliases = {
+      ls   = "eza -al --color=always --group-directories-first --icons";
+      la   = "eza -a --color=always --group-directories-first --icons";
+      ll   = "eza -l --color=always --group-directories-first --icons";
+      lt   = "eza -aT --color=always --group-directories-first --icons";
+      ldot = "eza -a | grep -e '^\\.'";
+      tarnow      = "tar -acf ";
+      untar       = "tar -zxvf ";
+      wget        = "wget -c ";
+      psmem       = "ps auxf | sort -nr -k 4";
+      psmem10     = "ps auxf | sort -nr -k 4 | head -10";
+      dir         = "dir --color=auto";
+      vdir        = "vdir --color=auto";
+      grep        = "grep --color=auto";
+      fgrep       = "fgrep --color=auto";
+      egrep       = "egrep --color=auto";
+      hw          = "hwinfo --short";
+      big         = "expac -H M '%m\t%n' | sort -h | nl";
+      jctl        = "journalctl -p 3 -xb";
+      rip         = "expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
+    };
   };
 
   # --PROGRAMS--
   programs = {
+    home-manager.enable = true;
     alacritty = {
       enable = true;
       settings = {
@@ -637,10 +642,6 @@
           settingsSyncVersion = 1760934920952;
         };
       };
-    };
-
-    waybar = {
-      enable = true;
     };
 
     wofi = {

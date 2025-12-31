@@ -1,0 +1,21 @@
+{ config, pkgs, ... }:
+
+let
+  waybarConfig = import ./config.nix;
+  waybarStyle = import ./style.nix;
+in {
+  home.packages = with pkgs; [
+    waybar
+  ];
+
+  programs.waybar = {
+    enable = true;
+    #systemd.enable = true;
+    settings = waybarConfig;
+    style = waybarStyle;
+  };
+
+  home.file.".config/waybar/scripts/power-menu.sh".source = ./scripts/power-menu.sh;
+  home.file.".config/waybar/scripts/bluetooth.sh".source = ./scripts/bluetooth.sh;
+  home.file.".config/waybar/scripts/volume.sh".source = ./scripts/volume.sh;
+}

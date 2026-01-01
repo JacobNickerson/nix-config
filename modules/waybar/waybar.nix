@@ -17,5 +17,4 @@ in {
 
   home.file.".config/waybar/scripts/power-menu.sh".source = ./scripts/power-menu.sh;
   home.file.".config/waybar/scripts/bluetooth.sh".source = ./scripts/bluetooth.sh;
-  home.file.".config/waybar/scripts/volume.sh".source = ./scripts/volume.sh;
 }

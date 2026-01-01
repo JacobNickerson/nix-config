@@ -45,20 +45,31 @@ in {
       rip         = "expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
     };
   };
-  # --SYSTEMD USER SERVICES--
-  systemd.user.services = {
+  services = {
+    hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+          before_sleep_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+          after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        };
+        listener = [
+          {
+            timeout = 10;
+            on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+          }
+          {
+            timeout = 15;
+            on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+            on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+          }
+        ];
+      };
+    };
+
     swaync = {
-      Unit = {
-        Description = "Sway Notification Center daemon";
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${pkgs.swaynotificationcenter}/bin/swaync";
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
+      enable = true;
     };
   };
 
@@ -259,6 +270,14 @@ in {
           editor = "nvim";
         };
       };
+    };
+
+    hyprlock = {
+      enable = true;
+    };
+
+    hyprshot = {
+      enable = true;
     };
     
     mpvpaper = {
@@ -758,5 +777,6 @@ in {
         }
       '';
     };
+
   };
 }

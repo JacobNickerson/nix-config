@@ -96,7 +96,6 @@
     psmisc
     brightnessctl
     fzf
-    swaynotificationcenter
     libnotify
     networkmanagerapplet
     pavucontrol
@@ -152,12 +151,13 @@
   # Do gaming stuff system wide because it requires a lot of configuration, especially with graphics
   # TODO: Split into a module?
   programs.steam = {
-	enable = true;
+    enable = true;
   };
 
   # Desktop Environments
   programs.hyprland = {
-	enable = true;
+    enable = true;
+    withUWSM = true;
   };
 
   # Fonts

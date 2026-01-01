@@ -100,6 +100,7 @@
     networkmanagerapplet
     pavucontrol
     pulseaudio
+    python3
     (pkgs.callPackage ./modules/sddm-lake/theme {})
   ];
 
@@ -116,15 +117,15 @@
 
   # SDDM
   services.displayManager.sddm = {
-	enable = true;
-	wayland.enable = true;
-	theme = "lake";
-	extraPackages = [
-		pkgs.qt6.qtsvg
-		pkgs.qt6.qtdeclarative
-		pkgs.qt6.qtmultimedia
-		pkgs.qt6.qtvirtualkeyboard
-	];
+    enable = true;
+    wayland.enable = true;
+    theme = "lake";
+    extraPackages = [
+      pkgs.qt6.qtsvg
+      pkgs.qt6.qtdeclarative
+      pkgs.qt6.qtmultimedia
+      pkgs.qt6.qtvirtualkeyboard
+    ];
 	settings = {
 		General = {
 			InputMethod = "qtvirtualkeyboard";

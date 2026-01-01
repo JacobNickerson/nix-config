@@ -56,11 +56,11 @@ in {
         };
         listener = [
           {
-            timeout = 10;
+            timeout = 300;
             on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
           }
           {
-            timeout = 15;
+            timeout = 1200;
             on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
             on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
           }

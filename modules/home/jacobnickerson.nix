@@ -1,6 +1,7 @@
 { config, pkgs, ... }: let
   imports = [
     ../waybar/waybar.nix
+    ../vivaldi-themes/twilight.nix
   ];
 in {
   inherit imports;
@@ -45,6 +46,7 @@ in {
       rip         = "expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
     };
   };
+
   services = {
     hypridle = {
       enable = true;
@@ -342,6 +344,16 @@ in {
         set -g status-right-length 50
         set -g status-left-length 10
       '';
+    };
+
+    vivaldi = {
+      enable = true;
+
+      extensions = [
+        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }  # UBlockOrigin
+        { id = "nngceckbapebfimnlniiiahkandclblb"; }  # Bitwarden
+        { id = "jghecgabfgfdldnmbfkhmffcabddioke"; }  # Volume Master
+      ];
     };
 
     vesktop = {
@@ -777,6 +789,5 @@ in {
         }
       '';
     };
-
   };
 }

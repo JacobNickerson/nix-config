@@ -3,6 +3,7 @@
     ../waybar/waybar.nix
     ../vivaldi-themes/twilight.nix
     ../hyprlock/hyprlock.nix
+    ../mpvpaper/mpvpaper.nix
   ];
 in {
   inherit imports;

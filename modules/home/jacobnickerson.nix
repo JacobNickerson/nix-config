@@ -2,9 +2,11 @@
   imports = [
     ../waybar/waybar.nix
     ../vivaldi-themes/twilight.nix
+    ../hyprlock/hyprlock.nix
   ];
 in {
   inherit imports;
+  fonts.fontconfig.enable = true;
   home = {
     username = "jacobnickerson";
     homeDirectory = "/home/jacobnickerson";
@@ -925,6 +927,8 @@ in {
         "$mainMod,R,exec,$menu"
         "$mainMod,P,pseudo"
         "$mainMod,J,togglesplit"
+        "CTRL_SUPER, L, exec, hyprlock"
+        ", Print, exec, hyprshot -m region"
 
         "$mainMod,h,movefocus,l"
         "$mainMod,l,movefocus,r"
@@ -956,8 +960,8 @@ in {
         "$mainMod,S,togglespecialworkspace,magic"
         "$mainMod SHIFT,S,movetoworkspace,special:magic"
 
-        "$mainMod,left,workspace,e+1"
-        "$mainMod,right,workspace,e-1"
+        "CTRL_SUPER,left,workspace,e+1"
+        "CTRL_SUPER,right,workspace,e-1"
       ];
 
       bindm = [

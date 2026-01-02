@@ -798,8 +798,7 @@ in {
   };
   wayland.windowManager.hyprland = {
     enable = true;
-
-    systemd.enable = false;
+    systemd.enable = true;
 
     settings = {
       monitor = [
@@ -1015,7 +1014,7 @@ in {
 
         {
           name = "vivaldi-workspace";
-          match.class = "^(vivaldi)$";
+          match.class = "^(vivaldi-stable)$";
           workspace = 2;
           no_initial_focus = true;
         }

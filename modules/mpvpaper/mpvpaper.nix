@@ -38,7 +38,7 @@ in
       WantedBy = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${home}/.config/mpvpaper/pause-mpvpaper.sh";
+      ExecStart = "${pkgs.bash}/bin/bash ${home}/.config/mpvpaper/pause-mpvpaper.sh";
       Restart = "always";
     };
   };

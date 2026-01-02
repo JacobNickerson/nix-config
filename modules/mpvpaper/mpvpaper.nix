@@ -17,11 +17,11 @@ in
 
   systemd.user.services.mpvpaper = {
     Unit = {
-      Description = "Autostarts MPVPaper";
+      Description = "mpvpaper wallpaper";
       After = [ "graphical-session.target" ];
     };
     Install = {
-      WantedBy = [ "default.target" ];
+      WantedBy = [ "graphical-session.target" ];
     };
     Service = {
       ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop --no-audio --profile=low-latency --framedrop=vo --hwdec=yes' ALL ${home}/.config/mpvpaper/background.mp4";
@@ -30,12 +30,12 @@ in
   };
   systemd.user.services.mpvpaper-manager = {
     Unit = {
-      Description = "Pauses MPVPaper when a window is active";
+      Description = "mpvpaper pausing script";
       After = [ "mpvpaper.service" ];
       Wants = [ "mpvpaper.service" ];
     };
     Install = {
-      WantedBy = [ "default.target" ];
+      WantedBy = [ "graphical-session.target" ];
     };
     Service = {
       ExecStart = "${home}/.config/mpvpaper/pause-mpvpaper.sh";

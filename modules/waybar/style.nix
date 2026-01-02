@@ -3,11 +3,11 @@
     font-family: "Ubuntu Mono Nerd Font", "Ubuntu Mono", monospace, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 500;
     font-size: 14px;
-    color: #eeeeee;
+    color: #F5F5F5;
 }
 
 #waybar {
-    background: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0.4);
     box-shadow: none;
     border: none;
     padding: 6px 12px;

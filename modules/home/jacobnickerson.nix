@@ -715,6 +715,10 @@ in {
       };
     };
 
+    vscode = {
+      enable = true;
+    };
+
     wofi = {
       enable = true;
 
@@ -826,7 +830,7 @@ in {
 
     settings = {
       monitor = [
-        ",2560x1440@240,auto,1"
+        ",preferred,auto,"
       ];
 
       "$terminal" = "alacritty";

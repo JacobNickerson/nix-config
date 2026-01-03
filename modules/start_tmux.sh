@@ -11,14 +11,19 @@ else
 	SESSION=$1
 fi
 
-if ! tmux has-session -t "$SESSION" 2>/dev/null; then
-	echo "Invalid session"
-	exit 1
-fi
+attempts=0
+until tmux has-session -t "$SESSION" 2>/dev/null; do
+  sleep 0.2
+  if ((attempts++ > 100)); then
+    echo "failed to find session"
+    exit 1
+  fi
+done
 
 tmux kill-pane -a -t $SESSION:0
 tmux select-layout -t $SESSION:0 tiled 
 tmux split-window -h -t $SESSION:0.0 "btop"
-tmux split-window -v -t $SESSION:0.1 "neo-matrix -D --color=orange"
+tmux split-window -v -t $SESSION:0.1 "neo -D --color=orange"
 tmux select-pane -t $SESSION:0 -L
 tmux send-key -t $SESSION:0 "clear; fastfetch" C-m
+echo "WE DID IT YOOO"

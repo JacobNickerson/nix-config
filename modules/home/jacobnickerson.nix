@@ -22,6 +22,7 @@ in {
       fastfetch
       heroic
       playerctl
+      neo
     ];
 
     sessionVariables = {
@@ -100,7 +101,7 @@ in {
   # --PROGRAMS--
   programs = {
     home-manager.enable = true;
-    
+
     alacritty = {
       enable = true;
       settings = {
@@ -835,7 +836,8 @@ in {
         "vivaldi"
         "steam"
         "vesktop"
-        "hyprctl dispatch workspace 3 && $terminal && sleep 5 ${home_dir}/.config/scripts/start_tmux.sh"
+        "hyprctl dispatch workspace 3 && $terminal"
+        "~/.config/scripts/start_tmux.sh 0"
       ];
 
       env = [

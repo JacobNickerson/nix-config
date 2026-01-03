@@ -26,7 +26,8 @@
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.limine.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
@@ -126,27 +127,27 @@
       pkgs.qt6.qtmultimedia
       pkgs.qt6.qtvirtualkeyboard
     ];
-	settings = {
-		General = {
-			InputMethod = "qtvirtualkeyboard";
-			Numlock = "none";
-			LogLevel = "DEBUG";
-		};
-		Users = {
-			MaximumUid = 60513;
-			MinimumUid = 1000;
-			RememberLastSession = true;
-			RememberLastUser = true;
-			ReuseSession = true;
-		};
-		Wayland = {
-			EnableHiDPI = true;
-		};
-		X11 = {
-			EnableHiDPI = true;
-			ServerArguments = "-nolisten tcp";
-		};
-	};
+    settings = {
+      General = {
+        InputMethod = "qtvirtualkeyboard";
+        Numlock = "none";
+        LogLevel = "DEBUG";
+      };
+      Users = {
+        MaximumUid = 60513;
+        MinimumUid = 1000;
+        RememberLastSession = true;
+        RememberLastUser = true;
+        ReuseSession = false;
+      };
+      Wayland = {
+        EnableHiDPI = true;
+      };
+      X11 = {
+        EnableHiDPI = true;
+        ServerArguments = "-nolisten tcp";
+      };
+    };
   };
   
   # Do gaming stuff system wide because it requires a lot of configuration, especially with graphics
@@ -156,6 +157,7 @@
   };
 
   # Desktop Environments
+  programs.uwsm.enable = true;
   programs.hyprland = {
     enable = true;
     withUWSM = true;

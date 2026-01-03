@@ -60,6 +60,14 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      qt6Packages.fcitx5-configtool
+      fcitx5-gtk
+    ];
+  };
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -166,6 +174,7 @@
   # Fonts
   fonts.packages = with pkgs; [
     noto-fonts
+    noto-fonts-cjk-sans
     noto-fonts-color-emoji
     nerd-fonts.roboto-mono
     nerd-fonts._0xproto

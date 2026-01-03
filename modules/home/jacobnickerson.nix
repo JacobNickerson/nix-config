@@ -5,6 +5,7 @@
     ../vivaldi-themes/twilight.nix
     ../hyprlock/hyprlock.nix
     ../mpvpaper/mpvpaper.nix
+    ../fcitx5/fcitx5.nix
   ];
   home_dir = config.home.homeDirectory;
 in {
@@ -98,7 +99,6 @@ in {
     };
   };
 
-  # --PROGRAMS--
   programs = {
     home-manager.enable = true;
 

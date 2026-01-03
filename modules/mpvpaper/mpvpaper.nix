@@ -64,14 +64,28 @@ in
   home.file = {
     "${home}/.config/mpvpaper/background.mp4".source = ./lake.mp4;
   };
-  systemd.user.services.mpvpaper-manager = {
+  systemd.user.services.mpvpaper = {
     Unit = {
-      Description = "mpvpaper pausing script";
-      After = [ "graphical-session.target" ];
+      Description = "mpvpaper";
+      After = [ "hyprland-ready.target" ];
       PartOf = [ "graphical-session.target" ];
     };
     Install = {
-      WantedBy = [ "graphical-session.target" ];
+      WantedBy = [ "hyprland-ready.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop --no-audio --profile=low-latency --framedrop=vo --hwdec=yes --no-terminal' ALL ${home}/.config/mpvpaper/background.mp4";
+      Restart = "always";
+    };
+  };
+  systemd.user.services.mpvpaper-manager = {
+    Unit = {
+      Description = "mpvpaper pausing script";
+      After = [ "hyprland-ready.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Install = {
+      WantedBy = [ "hyprland-ready.target" ];
     };
     Service = {
       ExecStart = pause-mpvpaper;

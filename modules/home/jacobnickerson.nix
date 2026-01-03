@@ -381,7 +381,7 @@ in {
     };
 
     vesktop = {
-      enable = true;
+      enable = false;
 
       vencord.themes = {
         modified-clearvision = ''
@@ -815,6 +815,11 @@ in {
     };
   };
   home.file."${home_dir}/.config/scripts/start_tmux.sh".source = ../start_tmux.sh; # silly exec-once script
+  systemd.user.targets.hyprland-ready = {
+    Unit = {
+      Description = "Custom target activated after Hyprland compositor initialization";
+    }; 
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false;
@@ -832,12 +837,12 @@ in {
       exec-once = [
         # NOTE: This is defined here instead of as a systemd service because it frequently dies by running before compositor
         #       is up. Path to video file is set in modules/mpvpaper/mpvpaper.nix
-        "mpvpaper -o '--loop --no-audio --profile=low-latency --framedrop=vo --hwdec=yes' ALL ~/.config/mpvpaper/background.mp4"
         "vivaldi"
         "steam"
         "vesktop"
         "hyprctl dispatch workspace 3 && $terminal"
         "~/.config/scripts/start_tmux.sh 0"
+        "systemctl --user start hyprland-ready.target"  
       ];
 
       env = [

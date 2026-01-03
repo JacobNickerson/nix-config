@@ -27,8 +27,8 @@ in {
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      XDG_CURRENT_SESSION = "Hyprland"; # NOTE: Setting these manually might be cringe, but who cares
       XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
     };
 
     shellAliases = {
@@ -829,6 +829,9 @@ in {
       "$mainMod" = "SUPER";
 
       exec-once = [
+        # NOTE: This is defined here instead of as a systemd service because it frequently dies by running before compositor
+        #       is up. Path to video file is set in modules/mpvpaper/mpvpaper.nix
+        "mpvpaper -o '--loop --no-audio --profile=low-latency --framedrop=vo --hwdec=yes' ALL ~/.config/mpvpaper/background.mp4"
         "vivaldi"
         "steam"
         "vesktop"

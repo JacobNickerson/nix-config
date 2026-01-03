@@ -64,20 +64,6 @@ in
   home.file = {
     "${home}/.config/mpvpaper/background.mp4".source = ./lake.mp4;
   };
-
-  systemd.user.services.mpvpaper = {
-    Unit = {
-      Description = "mpvpaper wallpaper";
-      After = [ "graphical-session.target" ];
-    };
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop --no-audio --profile=low-latency --framedrop=vo --hwdec=yes' ALL ${home}/.config/mpvpaper/background.mp4";
-      Restart = "always";
-    };
-  };
   systemd.user.services.mpvpaper-manager = {
     Unit = {
       Description = "mpvpaper pausing script";

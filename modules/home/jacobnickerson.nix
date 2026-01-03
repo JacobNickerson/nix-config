@@ -1,10 +1,12 @@
-{ config, pkgs, ... }: let
+{ inputs, config, pkgs, ... }: let
   imports = [
+    inputs.nvibrant.homeModules.default
     ../waybar/waybar.nix
     ../vivaldi-themes/twilight.nix
     ../hyprlock/hyprlock.nix
     ../mpvpaper/mpvpaper.nix
   ];
+  home_dir = config.home.homeDirectory;
 in {
   inherit imports;
   fonts.fontconfig.enable = true;
@@ -73,6 +75,21 @@ in {
           }
         ];
       };
+    };
+
+    nvibrant = {
+      enable = true;
+      arguments = [ # NOTE: For some reason my GPU jumped from eDP-1 to eDP-6, just shotgun all of them to be safe
+        "728" 
+        "728" 
+        "728" 
+        "728" 
+        "728" 
+        "728" 
+        "728" 
+        "728" 
+        "728" 
+      ];
     };
 
     swaync = {
@@ -796,9 +813,10 @@ in {
       '';
     };
   };
+  home.file."${home_dir}/.config/scripts/start_tmux.sh".source = ../start_tmux.sh; # silly exec-once script
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
 
     settings = {
       monitor = [
@@ -814,7 +832,7 @@ in {
         "vivaldi"
         "steam"
         "vesktop"
-        "hyprctl dispatch workspace 3; $terminal; ~/.config/scripts/start_tmux.sh"
+        "hyprctl dispatch workspace 3 && $terminal && sleep 5 ${home_dir}/.config/scripts/start_tmux.sh"
       ];
 
       env = [

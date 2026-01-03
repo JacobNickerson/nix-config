@@ -69,7 +69,7 @@
 #workspaces button.active label {
     color: #00FF00;
     font-weight: bold;
-    background-color: rgba(255,255,255,0.05);
+    background-color: rgba(255,255,255,0.15);
 }
 ''
 

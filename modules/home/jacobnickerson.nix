@@ -830,7 +830,7 @@ in {
 
     settings = {
       monitor = [
-        ",preferred,auto,"
+        ",preferred,auto,1"
       ];
 
       "$terminal" = "alacritty";

@@ -139,7 +139,6 @@
       General = {
         InputMethod = "qtvirtualkeyboard";
         Numlock = "none";
-        LogLevel = "DEBUG";
       };
       Users = {
         MaximumUid = 60513;

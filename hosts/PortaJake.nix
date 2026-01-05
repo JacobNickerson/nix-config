@@ -29,7 +29,7 @@ in
     AllowSuspend=yes
     AllowHibernation=yes
     AllowSuspendThenHibernate=yes
-    HibernateDelaySec=15s
+    HibernateDelaySec=10min
   '';
 
   # Hibernation

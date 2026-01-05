@@ -62,7 +62,7 @@ in {
       settings = {
         general = {
           lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
-          before_sleep_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
           after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
         };
         listener = [
@@ -71,9 +71,9 @@ in {
             on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
           }
           {
-            timeout = 1200;
-            on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-            on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+            timeout = 600;
+            on-timeout = "systemctl suspend";
+            on-resume = "systemctl --user restart mpvpaper.service";
           }
         ];
       };

@@ -381,7 +381,7 @@ in {
     };
 
     vesktop = {
-      enable = false;
+      enable = true;
 
       vencord.themes = {
         modified-clearvision = ''

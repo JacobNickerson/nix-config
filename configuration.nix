@@ -10,6 +10,11 @@
       ./hosts/NixJake.nix
     ];
 
+  # currently used to override vesktop package
+  nixpkgs.overlays = [
+    (import ./modules/overlays/vesktop.nix)
+  ];
+
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

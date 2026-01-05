@@ -7,23 +7,11 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hosts/NixJake.nix
     ];
 
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Graphics Drivers
-  hardware.graphics = {
-    enable = true;
-  };
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false; # change to true if getting graphical bugs after hibernation
-    open = true;
-    nvidiaSettings = true;
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = false;
@@ -37,6 +25,12 @@
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 25;
+    algorithm = "zstd";
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -125,9 +119,10 @@
   };
 
   # SDDM
+  services.xserver.enable = true;
   services.displayManager.sddm = {
     enable = true;
-    wayland.enable = true;
+    wayland.enable = false;
     theme = "lake";
     extraPackages = [
       pkgs.qt6.qtsvg

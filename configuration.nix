@@ -74,6 +74,10 @@
     pulse.enable = true;
   };
 
+  services.flatpak = {
+    enable = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jacobnickerson = {
     isNormalUser = true;
@@ -104,6 +108,7 @@
     pavucontrol
     pulseaudio
     python3
+    ntfs3g
     (pkgs.callPackage ./modules/sddm-lake/theme {})
   ];
 

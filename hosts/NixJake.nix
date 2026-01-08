@@ -40,17 +40,17 @@ in
   fileSystems."/" =
     { device = main-fs;
       fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd:3" ];
+      options = [ "subvol=@" "compress=zstd:3" "noatime" ];
     };
   fileSystems."/home" =
     { device = main-fs;
       fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd:3" ];
+      options = [ "subvol=@home" "compress=zstd:3" "noatime" ];
     };
   fileSystems."/swap" =
     { device = main-fs;
       fsType = "btrfs";
-      options = [ "subvol=@swap" "nodatacow" "noatime" ];
+      options = [ "subvol=@swap" "compress=no" "nodatacow" "noatime" ];
     };
 
   fileSystems."/boot" =

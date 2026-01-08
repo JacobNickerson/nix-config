@@ -25,7 +25,8 @@
     };
   in
   {
-    nixosConfigurations.NixJake = nixpkgs.lib.nixosSystem {
+    #nixosConfigurations.NixJake = nixpkgs.lib.nixosSystem {
+    #nixosConfigurations.PortaJake = nixpkgs.lib.nixosSystem {
       inherit system pkgs;
       specialArgs = { inherit inputs; };
       modules = [

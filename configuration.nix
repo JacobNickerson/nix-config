@@ -7,7 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hosts/NixJake.nix
+      # ./hosts/NixJake.nix
+      # ./hosts/PortaJake.nix
     ];
 
   # Enable Flakes
@@ -21,10 +22,14 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "NixJake"; # Define your hostname.
+  #networking.hostName = "NixJake";
+  #networking.hostName = "PortaJake";
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   zramSwap = {
     enable = true;

@@ -24,6 +24,7 @@ in {
       heroic
       playerctl
       neo
+      piper
     ];
 
     sessionVariables = {

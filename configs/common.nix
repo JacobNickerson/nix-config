@@ -77,11 +77,14 @@
 
   services.ratbagd.enable = true;
 
+  programs.fish.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jacobnickerson = {
     isNormalUser = true;
     description = "Jacob Nickerson";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
     packages = with pkgs; [];
   };
 

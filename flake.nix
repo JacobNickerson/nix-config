@@ -28,7 +28,6 @@
         inherit system pkgs;
         specialArgs = { inherit inputs; };
         modules = [
-          # hostname defined exactly once
           ({ ... }: { networking.hostName = hostname; })
           hostModule
           hostConfig
@@ -36,7 +35,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { inherit inputs; hostname = hostname; };
             home-manager.users.jacobnickerson = import ./modules/home/users/jacobnickerson.nix;
           }
         ];

@@ -1,4 +1,13 @@
-{ config, ... }:
+{ config, lib, hostname, ... }:
+let
+	monitors = {
+		"NixJake" = [ ",2560x1440@240,auto,1" ];
+		"PortaJake" = [ ",preferred,auto,1"];
+	};
+	matched = lib.findFirst (m: m != null) null
+		(lib.mapAttrsToList (h: v: lib.optional (hostname == h) v) monitors);
+	monitor = if matched != null then matched else [ ",preferred,auto,1" ];
+in
 {
 	home.file."${config.home.homeDirectory}/.config/scripts/start_tmux.sh".source = ../start_tmux.sh; # silly exec-once script
 	systemd.user.targets.hyprland-ready = {
@@ -11,9 +20,7 @@
 		systemd.enable = false;
 
 		settings = {
-			monitor = [
-				",preferred,auto,1"
-			];
+			monitor = monitor; 
 
 			"$terminal" = "alacritty";
 			"$fileManager" = "dolphin";

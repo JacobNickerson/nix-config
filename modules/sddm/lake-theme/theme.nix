@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 
 pkgs.stdenvNoCC.mkDerivation {
   pname = "sddm-lake";
@@ -15,4 +15,3 @@ pkgs.stdenvNoCC.mkDerivation {
     platforms = pkgs.lib.platforms.linux;
   };
 }
-

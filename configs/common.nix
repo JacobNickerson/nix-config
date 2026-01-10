@@ -5,18 +5,18 @@
 { config, pkgs, ... }:
 
 {
-  # Enable Flakes
+  imports = [
+    ../modules/sddm/sddm.nix
+  ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = false;
   boot.loader.limine.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;
   networking.networkmanager.enable = true;
   hardware.bluetooth = {
     enable = true;
@@ -29,16 +29,9 @@
     algorithm = "zstd";
   };
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Set your time zone.
   time.timeZone = "America/New_York";
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -59,7 +52,6 @@
       fcitx5-gtk
     ];
   };
-  # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -79,7 +71,6 @@
 
   programs.fish.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jacobnickerson = {
     isNormalUser = true;
     description = "Jacob Nickerson";
@@ -88,11 +79,6 @@
     packages = with pkgs; [];
   };
 
-  # Allow unfree packages
-  #nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -110,14 +96,11 @@
     pavucontrol
     pulseaudio
     python3
-    ntfs3g
-    (pkgs.callPackage ../modules/sddm-lake/theme {})
   ];
 
   # Wayland Session Stuff
   services.dbus.enable = true;
   security.polkit.enable = true;
-
   xdg.portal = {
     enable = true;
     extraPortals = [
@@ -125,42 +108,7 @@
     ];
   };
 
-  # SDDM
-  services.xserver.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = false;
-    theme = "lake";
-    extraPackages = [
-      pkgs.qt6.qtsvg
-      pkgs.qt6.qtdeclarative
-      pkgs.qt6.qtmultimedia
-      pkgs.qt6.qtvirtualkeyboard
-    ];
-    settings = {
-      General = {
-        InputMethod = "qtvirtualkeyboard";
-        Numlock = "none";
-      };
-      Users = {
-        MaximumUid = 60513;
-        MinimumUid = 1000;
-        RememberLastSession = true;
-        RememberLastUser = true;
-        ReuseSession = false;
-      };
-      Wayland = {
-        EnableHiDPI = true;
-      };
-      X11 = {
-        EnableHiDPI = true;
-        ServerArguments = "-nolisten tcp";
-      };
-    };
-  };
-  
   # Do gaming stuff system wide because it requires a lot of configuration, especially with graphics
-  # TODO: Split into a module?
   programs.steam = {
     enable = true;
   };
@@ -180,7 +128,6 @@
     nerd-fonts.roboto-mono
     nerd-fonts._0xproto
     font-awesome
-    (pkgs.callPackage ../modules/sddm-lake/font {})
   ];
   fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans" ];
 
@@ -196,25 +143,6 @@
     VISUAL = "vim";
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -222,5 +150,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "26.05"; # Did you read the comment?
-
 }

@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, fontconfig }:
+{ stdenv, ... }:
 
 stdenv.mkDerivation rec {
   pname = "pixelon";
@@ -7,12 +7,11 @@ stdenv.mkDerivation rec {
   src = ./pixelon;
 
   installPhase = ''
-    mkdir -p $out/share/fonts/truetype/myfont
-    cp ./pixelon.regular.ttf $out/share/fonts/truetype/myfont/
+    mkdir -p $out/share/fonts/truetype/pixelon
+    cp ./pixelon.regular.ttf $out/share/fonts/truetype/pixelon/
   '';
 
   meta = with stdenv.lib; {
     description = "Pixelon derivation";
   };
 }
-

@@ -28,8 +28,6 @@ in
 			"$mainMod" = "SUPER";
 
 			exec-once = [
-				# NOTE: This is defined here instead of as a systemd service because it frequently dies by running before compositor
-				#       is up. Path to video file is set in modules/mpvpaper/mpvpaper.nix
 				"vivaldi"
 				"steam"
 				"vesktop"

@@ -108,7 +108,7 @@
     pulseaudio
     python3
     ntfs3g
-    (pkgs.callPackage ./modules/sddm-lake/theme {})
+    (pkgs.callPackage ../modules/sddm-lake/theme {})
   ];
 
   # Wayland Session Stuff
@@ -177,7 +177,7 @@
     nerd-fonts.roboto-mono
     nerd-fonts._0xproto
     font-awesome
-    (pkgs.callPackage ./modules/sddm-lake/font {})
+    (pkgs.callPackage ../modules/sddm-lake/font {})
   ];
   fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans" ];
 

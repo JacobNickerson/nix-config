@@ -23,35 +23,35 @@
       overlays = [ nvibrant.overlays.default ];
     };
 
-    mkHost = { hostname, hostModule }:
+    mkHost = { hostname, hostModule, hostConfig }:
       nixpkgs.lib.nixosSystem {
         inherit system pkgs;
         specialArgs = { inherit inputs; };
-
         modules = [
-          ./configuration.nix
-
           # hostname defined exactly once
           ({ ... }: { networking.hostName = hostname; })
           hostModule
+          hostConfig
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.jacobnickerson = import ./modules/home/jacobnickerson.nix;
+            home-manager.users.jacobnickerson = import ./modules/home/jacobnickerson/jacobnickerson.nix;
           }
         ];
-      };
+      };  
   in {
     nixosConfigurations = {
       NixJake = mkHost {
         hostname = "NixJake";
         hostModule = ./hosts/NixJake.nix;
+        hostConfig = ./configs/NixJake.nix;
       };
       PortaJake = mkHost {
         hostname = "PortaJake";
         hostModule = ./hosts/PortaJake.nix;
+        hostConfig = ./configs/PortaJake.nix;
       };
     };
   };

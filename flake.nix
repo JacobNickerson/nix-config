@@ -45,12 +45,12 @@
     nixosConfigurations = {
       NixJake = mkHost {
         hostname = "NixJake";
-        hostModule = ./hosts/NixJake.nix;
+        hostModule = ./hosts/NixJake/NixJake.nix;
         hostConfig = ./configs/NixJake.nix;
       };
       PortaJake = mkHost {
         hostname = "PortaJake";
-        hostModule = ./hosts/PortaJake.nix;
+        hostModule = ./hosts/PortaJake/PortaJake.nix;
         hostConfig = ./configs/PortaJake.nix;
       };
     };

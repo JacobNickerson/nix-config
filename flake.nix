@@ -37,7 +37,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.jacobnickerson = import ./modules/home/jacobnickerson/jacobnickerson.nix;
+            home-manager.users.jacobnickerson = import ./modules/home/users/jacobnickerson.nix;
           }
         ];
       };  

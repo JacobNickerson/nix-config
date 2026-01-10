@@ -43,7 +43,6 @@ in {
 			EDITOR = "nvim";
 			VISUAL = "nvim";
 			XDG_CURRENT_SESSION = "Hyprland"; # NOTE: Setting these manually might be cringe, but who cares
-			XDG_CURRENT_DESKTOP = "Hyprland";
 		};
 
 		shellAliases = {

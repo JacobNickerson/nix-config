@@ -29,19 +29,20 @@ let
 		}
 	];
 	};
-	matched = lib.findFirst (m: m != null) null
-		(lib.mapAttrsToList (h: v: lib.optional (hostname == h) v) listeners);
-	listener = if matched != null then matched else [
-		{
-			timeout = 300;
-			on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
-		}
-		{
-			timeout = 600;
-			on-timeout = "systemctl suspend";
-			on-resume = "systemctl --user restart mpvpaper.service";
-		}
-	];
+	matched = listeners.${hostname} or null; 
+	listener = if matched != null
+		then matched
+		else [
+			{
+				timeout = 300;
+				on-timeout = "${pkgs.hyprlock}/bin/hyprlock";
+			}
+			{
+				timeout = 600;
+				on-timeout = "systemctl suspend";
+				on-resume = "systemctl --user restart mpvpaper.service";
+			}
+		];
 in {
 	services.hypridle = {
 		enable = true;

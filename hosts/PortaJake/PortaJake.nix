@@ -3,19 +3,12 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 
-let
-  main-fs = "/dev/disk/by-uuid/5d5df10a-d424-42ed-8730-8107905d4182";
-  boot-fs = "/dev/disk/by-uuid/4017-4DD4";
-in
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ 
+      ./hardware-configuration.nix
+  ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = [ "usb_storage" "sd_mod" ];
 
   services.xserver.videoDrivers = [ "amdgpu" ];
 
@@ -31,38 +24,20 @@ in
   '';
 
   # Hibernation
-  swapDevices = [
+  swapDevices = lib.mkForce [
     {
       device = "/swap/swapfile";
       size = 20 * 1024; 
     }
   ];
-  boot.resumeDevice = main-fs;
+  boot.resumeDevice = config.fileSystems."/swap".device;
   boot.kernelParams = [
     "resume_offset=8829848" 
   ];
 
-  fileSystems."/" =
-    { device = main-fs;
-      fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd:3" "noatime" ];
-    };
-  fileSystems."/home" =
-    { device = main-fs;
-      fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd:3" "noatime" ];
-    };
-  fileSystems."/swap" =
-    { device = main-fs;
-      fsType = "btrfs";
-      options = [ "subvol=@swap" "nodatacow" "nodatasum" "noatime" ];
-    };
-
-  fileSystems."/boot" =
-    { device = boot-fs;
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/".options = [ "compress=zstd:3" "noatime" ];
+  fileSystems."/home".options = [ "compress=zstd:3" "noatime" ];
+  fileSystems."/swap".options = [ "nodatacow" "nodatasum" "noatime" ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

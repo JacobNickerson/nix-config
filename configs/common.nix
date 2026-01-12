@@ -71,6 +71,8 @@
 
   programs.fish.enable = true;
 
+  programs.nix-ld.enable = true;
+
   users.users.jacobnickerson = {
     isNormalUser = true;
     description = "Jacob Nickerson";

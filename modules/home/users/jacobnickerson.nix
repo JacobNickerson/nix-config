@@ -81,5 +81,6 @@ in {
 		hyprshot.enable = true;
 		mpvpaper.enable = true;
 		vscode.enable = true;
+		obs-studio.enable = true;
 	};
 }

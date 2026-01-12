@@ -16,17 +16,18 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.kernelParams = [
+    "zswap.enabled=1"
+    "zswap.compressor=zstd"
+    "zswap.max_pool_percent=25"
+    "zswap.shrinker_enabled=1"
+  ];
+
   networking.wireless.enable = true;
   networking.networkmanager.enable = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-  };
-
-  zramSwap = {
-    enable = true;
-    memoryPercent = 25;
-    algorithm = "zstd";
   };
 
   time.timeZone = "America/New_York";

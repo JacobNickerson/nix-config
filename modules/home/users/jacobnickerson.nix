@@ -37,6 +37,7 @@ in {
 			playerctl
 			neo
 			piper
+      zoom-us
 		];
 
 		sessionVariables = {

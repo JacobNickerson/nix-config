@@ -10,7 +10,7 @@
 			pkgs.vimPlugins.nvim-treesitter
 			pkgs.vimPlugins.lualine-nvim
 		];
-		extraLuaConfig = ''
+		initLua = ''
 			vim.opt.termguicolors = true
 			vim.cmd [[colorscheme nightfly]]
 			vim.opt.tabstop = 2

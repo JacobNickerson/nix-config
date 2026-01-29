@@ -99,6 +99,7 @@
     pavucontrol
     pulseaudio
     python3
+    rar
   ];
 
   # Wayland Session Stuff

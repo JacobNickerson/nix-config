@@ -2,7 +2,7 @@
 let
 	monitors = {
 		"NixJake" = [ ",2560x1440@240,auto,1" ];
-		"PortaJake" = [ ",preferred,auto,1" ];
+		"PortaJake" = [ ",preferred,auto,1" ",1920x1080@60,auto,1"];
 	};
 	matched = monitors.${hostname} or null;
 	monitor =

@@ -100,6 +100,7 @@
     pulseaudio
     python3
     rar
+    compsize
   ];
 
   # Wayland Session Stuff

@@ -23,6 +23,7 @@
 in {
 	inherit imports;
 	fonts.fontconfig.enable = true;
+
 	home = {
 		username = "jacobnickerson";
 		homeDirectory = "/home/jacobnickerson";
@@ -38,6 +39,7 @@ in {
 			neo
 			piper
       zoom-us
+      moonlight-qt
 		];
 
 		sessionVariables = {

@@ -29,6 +29,7 @@
     enable = true;
     powerOnBoot = true;
   };
+  hardware.xpadneo.enable = true;
 
   time.timeZone = "America/New_York";
 

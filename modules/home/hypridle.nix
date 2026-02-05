@@ -3,7 +3,7 @@ let
  listeners = {
 	"NixJake" = [
 		{
-			timeout = 120;
+			timeout = 60;
 			on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
 			on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
 		}

@@ -255,6 +255,10 @@ in
 					no_initial_focus = true;
 				}
 			];
+
+      xwayland = {
+        force_zero_scaling = true;
+      };
 		};
 	};
 }

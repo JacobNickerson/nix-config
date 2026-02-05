@@ -1,7 +1,7 @@
 { config, lib, hostname, ... }:
 let
 	monitors = {
-		"NixJake" = [ ",2560x1440@240,auto,1" ];
+		"NixJake" = [ ",3840x2160@240,auto,1.25" ];
 		"PortaJake" = [ ",preferred,auto,1" ",1920x1080@60,auto,1"];
 	};
 	matched = monitors.${hostname} or null;
@@ -148,6 +148,7 @@ in
 				"$mainMod,R,exec,$menu"
 				"$mainMod,P,pseudo"
 				"$mainMod,J,togglesplit"
+				"$mainMod,apostrophe,exec,pkill -SIGUSR1 waybar"
 				"CTRL_SUPER, L, exec, hyprlock"
 				", Print, exec, hyprshot -m region"
 

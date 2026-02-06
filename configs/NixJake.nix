@@ -7,4 +7,11 @@
   environment.systemPackages = with pkgs; [
     ntfs3g
   ];
+  
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
 }

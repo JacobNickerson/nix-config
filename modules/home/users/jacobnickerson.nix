@@ -74,7 +74,7 @@ in {
 	services = {
 		nvibrant = {
 			enable = true;
-			arguments = [ "728" "728" "728" "728" "728" "728" "728" ];
+			vibrancy = [ "100%" "100%" "175%" ];
 		};
 		swaync.enable = true;
 	};

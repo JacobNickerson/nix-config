@@ -1,7 +1,7 @@
 { config, lib, hostname, ... }:
 let
 	monitors = {
-		"NixJake" = [ ",3840x2160@240,auto,1.2" ];
+		"NixJake" = [ ",3840x2160@240,auto,1.2,bitdepth,10" ];
 		"PortaJake" = [ ",preferred,auto,1" ",1920x1080@60,auto,1"];
 	};
 	matched = monitors.${hostname} or null;
@@ -47,7 +47,7 @@ in
 			general = {
 				gaps_in = 3;
 				gaps_out = 0;
-				border_size = 1;
+				border_size = 0;
 
 				"col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
 				"col.inactive_border" = "rgba(595959aa)";

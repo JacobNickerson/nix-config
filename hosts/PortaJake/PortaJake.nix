@@ -10,8 +10,6 @@
 
   boot.initrd.availableKernelModules = [ "usb_storage" "sd_mod" ];
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
   # Suspend-then-hibernate
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend";
@@ -30,7 +28,7 @@
       size = 20 * 1024; 
     }
   ];
-  boot.resumeDevice = config.fileSystems."/swap".device;
+  #boot.resumeDevice = config.fileSystems."/swap".device;
   boot.kernelParams = [
     "resume_offset=8829848" 
   ];

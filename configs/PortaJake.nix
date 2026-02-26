@@ -3,6 +3,7 @@
   imports = [
     ./common.nix
   ];
+
   # Battery life settings
   services.power-profiles-daemon.enable = true;
   powerManagement.powertop.enable = true;
@@ -12,4 +13,22 @@
   networking.wireless.enable = lib.mkForce false;
   networking.wireless.iwd.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+
+  # Hibernation
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchDocked = "suspend-then-hibernate";
+  };
+  systemd.sleep.extraConfig = ''
+    SuspendState=mem
+    HibernateMode=platform
+    HibernateDelaySec=10min
+  '';
+  swapDevices = lib.mkForce [
+    {
+      device = "/swap/swapfile";
+      size = 20 * 1024; 
+    }
+  ];
+  boot.initrd.systemd.enable = true;
 }

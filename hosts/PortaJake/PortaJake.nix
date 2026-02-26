@@ -36,10 +36,7 @@
       size = 20 * 1024; 
     }
   ];
-  #boot.resumeDevice = config.fileSystems."/swap".device;
-  boot.kernelParams = [
-    "resume_offset=8829848" 
-  ];
+  boot.initrd.systemd.enable = true;
 
   fileSystems."/".options = [ "compress=zstd:3" "noatime" ];
   fileSystems."/home".options = [ "compress=zstd:3" "noatime" ];

@@ -18,18 +18,16 @@
     LIBVA_DRIVER_NAME = "iHD";
   };
 
-  # Suspend-then-hibernate
+  # Hibernation
   services.logind.settings.Login = {
-    HandleLidSwitch = "suspend";
-    HandleLidSwitchDocked = "ignore";
-    PowerKey = "suspend";
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchDocked = "suspend-then-hibernate";
   };
   systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    AllowHibernation=yes
+    SuspendState=mem
+    HibernateMode=platform
+    HibernateDelaySec=10min
   '';
-
-  # Hibernation
   swapDevices = lib.mkForce [
     {
       device = "/swap/swapfile";

@@ -14,13 +14,13 @@ let
 	];
 	"PortaJake" = [
 		{
-			timeout = 300;
+			timeout = 60;
 			on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off; ${pkgs.hyprlock}/bin/hyprlock";
 			on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
 		}
 		{
-			timeout = 600;
-			on-timeout = "systemctl hibernate";
+			timeout = 300;
+			on-timeout = "systemctl suspend-then-hibernate";
 		}
 	];
 	};

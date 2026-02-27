@@ -47,7 +47,11 @@
 
 		battery = {
 			format = "{capacity}% {icon}";
-			format-icons = ["" "" "" "" ""];
+			format-icons = {
+				charging = ["󰢟" "󰂆" "󰂈" "󰂉" "󰂊" "󰂅"];
+				default = ["󰁺" "󰁻" "󰁽" "󰁿" "󰂁" "󰁹"];
+				plugged = ["󰂄"];
+			};
 		};
 
 		network = {
@@ -79,11 +83,6 @@
 			format-alt = "{usage}% ";
 			tooltip = false;
 		};
-
-		#backlight = {
-		#  format = "󰖨  {}";
-		#  device = "acpi_video0";
-		#};
 
 		"custom/power" = {
 			format = "⏻";

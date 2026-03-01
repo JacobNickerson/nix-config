@@ -23,8 +23,10 @@
     "zswap.shrinker_enabled=1"
   ];
 
-  networking.wireless.enable = true;
+  networking.wireless.enable = false;
+  networking.wireless.iwd.enable = true;
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

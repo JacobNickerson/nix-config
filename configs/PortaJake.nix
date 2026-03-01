@@ -10,9 +10,6 @@
   boot.kernelParams = [
     "pcie_aspm=force"  # May cause instability, remove if so
   ];  
-  networking.wireless.enable = lib.mkForce false;
-  networking.wireless.iwd.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
 
   # Hibernation
   services.logind.settings.Login = {

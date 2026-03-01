@@ -20,6 +20,12 @@
     nvidiaSettings = true;
   };
 
+  # Wifi Adapter
+  networking.networkmanager.wifi.powersave = false;
+  boot.kernelParams = [
+    "ath12k_pci.disable_aspm=1"
+  ];
+
   # Filesystem options
   fileSystems."/".options = lib.mkForce [ "subvol=@" "compress=zstd:3" "noatime" ];
   fileSystems."/home".options = lib.mkForce [ "subvol=@home" "compress=zstd:3" "noatime" ];

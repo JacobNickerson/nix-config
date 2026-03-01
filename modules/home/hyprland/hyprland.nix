@@ -1,14 +1,23 @@
 { config, lib, hostname, ... }:
 let
 	monitors = {
-		"NixJake" = [ ",3840x2160@240,auto,1.2,bitdepth,10" ];
+		"NixJake" = [ ",3840x2160@240,auto,1.2,bitdepth,10" ",3840x2160@120,auto,1.2,mirror,HDMI-A-2" ];
 		"PortaJake" = [ ",preferred,auto,1" ",1920x1080@60,auto,1"];
 	};
-	matched = monitors.${hostname} or null;
+	extra_execs = {
+		"NixJake" = [ "hyprctl output create headless virtual" ];
+	};
+	monitor_match = monitors.${hostname} or null;
 	monitor =
-	if matched != null
-		then matched
+	if monitor_match != null
+		then monitor_match
 		else [ ",preferred,auto,1" ];
+	exec_match = extra_execs.${hostname} or null;
+	extra_exec =
+	if exec_match != null
+		then exec_match 
+		else [];
+	
 in
 {
 	home.file."${config.home.homeDirectory}/.config/scripts/start_tmux.sh".source = ../start_tmux.sh; # silly exec-once script
@@ -36,7 +45,7 @@ in
 				"hyprctl dispatch workspace 3 && $terminal"
 				"~/.config/scripts/start_tmux.sh 0"
 				"systemctl --user start hyprland-ready.target"  
-			];
+			] ++ extra_exec;
 
 			env = [
 				"XCURSOR_SIZE,24"

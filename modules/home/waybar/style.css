@@ -44,6 +44,11 @@
   font-family: "JetBrainsMono Nerd Font";
 }
 
+#waybar .module#custom-inhibit {
+    font-family: "JetBrainsMono Nerd Font";
+    padding: 1px 15px 0 10px;
+}
+
 /* Optional separator */
 #waybar .separator {
     margin: 0 8px;

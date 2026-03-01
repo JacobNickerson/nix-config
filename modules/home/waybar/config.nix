@@ -19,6 +19,7 @@
 		];
 
 		"modules-right" = [
+			"custom/inhibit"
 			"custom/notification"
 			"tray"
 			"bluetooth"
@@ -110,6 +111,18 @@
 			# on-click = "sleep 0.1 && task-waybar";
 			on-click = "sleep 0.1 && swaync-client -t";
 			escape = true;
+		};
+
+		"custom/inhibit" = {
+			exec = "~/.config/waybar/scripts/inhibit-sleep.sh";
+			format = "{icon}";
+			format-icons = { 
+				inhibited = "󰷛";
+				uninhibited =  "󰍹";
+			};
+			on-click = "~/.config/waybar/scripts/inhibit-sleep.sh toggle";
+			return-type = "json";
+			signal =  8;
 		};
 
 		"bluetooth" = {

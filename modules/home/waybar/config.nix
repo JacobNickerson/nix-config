@@ -220,8 +220,6 @@
 					""
 					""
 				];
-				min-length = 7;
-				max-length = 7;
 				on-scroll-up = "~/.config/waybar/scripts/backlight.sh up";
 				on-scroll-down = "~/.config/waybar/scripts/backlight.sh down";
 				tooltip = false;

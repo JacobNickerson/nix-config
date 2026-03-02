@@ -28,4 +28,19 @@
     }
   ];
   boot.initrd.systemd.enable = true;
+
+  # HDMI Audio
+  # services.pipewire.wireplumber.extraConfig."51-alsa-auto-switch" = {
+  #   "monitor.alsa.rules" = [
+  #     {
+  #       matches = [
+  #         { "device.name" = "~alsa_card.*"; }
+  #       ];
+  #       actions.update-props = {
+  #         "api.acp.auto-profile" = true;
+  #         "api.acp.auto-port" = true;
+  #       };
+  #     }
+  #   ];
+  # };
 }

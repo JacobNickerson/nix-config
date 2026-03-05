@@ -130,6 +130,8 @@ in
 			misc = {
 				force_default_wallpaper = 0;
 				disable_hyprland_logo = true;
+				mouse_move_enables_dpms = true;
+				key_press_enables_dpms = true;
 			};
 
 			input = {
@@ -158,7 +160,8 @@ in
 				"$mainMod,P,pseudo"
 				"$mainMod,J,togglesplit"
 				"$mainMod,apostrophe,exec,pkill -SIGUSR1 waybar"
-				"CTRL_SUPER, L, exec, hyprlock"
+				"$mainMod, L, exec, sleep 0.5 && hyprctl dispatch dpms off" 
+				"CTRL_SUPER, L, exec, sleep 0.5 && hyprctl dispatch dpms off && hyprlock"
 				", Print, exec, hyprshot -m region"
 
 				"$mainMod,h,movefocus,l"

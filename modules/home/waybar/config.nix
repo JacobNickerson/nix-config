@@ -121,6 +121,7 @@
 				uninhibited =  "󰍹";
 			};
 			on-click = "~/.config/waybar/scripts/inhibit-sleep.sh toggle";
+			on-click-right = "hyprctl dispatch dpms off";
 			return-type = "json";
 			signal =  8;
 		};

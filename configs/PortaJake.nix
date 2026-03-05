@@ -16,11 +16,11 @@
     HandleLidSwitch = "suspend-then-hibernate";
     HandleLidSwitchDocked = "suspend-then-hibernate";
   };
-  systemd.sleep.extraConfig = ''
-    SuspendState=mem
-    HibernateMode=platform
-    HibernateDelaySec=10min
-  '';
+  systemd.sleep.settings.Sleep = { 
+    SuspendState = "mem";
+    HibernateMode = "platform";
+    HibernateDelaySec = "10min";
+  };
   swapDevices = lib.mkForce [
     {
       device = "/swap/swapfile";

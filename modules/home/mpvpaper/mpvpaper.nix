@@ -74,7 +74,7 @@ in
 			WantedBy = [ "hyprland-ready.target" ];
 		};
 		Service = {
-			ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop --no-audio --profile=low-latency --framedrop=vo --hwdec=yes --no-terminal' ALL ${home}/.config/mpvpaper/background.mp4";
+			ExecStart = "${pkgs.mpvpaper}/bin/mpvpaper -o '--loop --no-audio --profile=fast --vf=fps=30 --hwdec=auto --vo=gpu --scale=bilinear --cscale=bilinear --deband=no --interpolation=no --vd-lavc-fast=yes --cache=no --demuxer-max-bytes=16MiB --demuxer-max-back-bytes=4MiB' ALL ${home}/.config/mpvpaper/background.mp4";
 			Restart = "always";
 		};
 	};

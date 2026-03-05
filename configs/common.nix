@@ -7,6 +7,7 @@
 {
   imports = [
     ../modules/sddm/sddm.nix
+    ../modules/gaming.nix
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -114,11 +115,6 @@
     extraPortals = [
       pkgs.xdg-desktop-portal-hyprland
     ];
-  };
-
-  # Do gaming stuff system wide because it requires a lot of configuration, especially with graphics
-  programs.steam = {
-    enable = true;
   };
 
   # Desktop Environments

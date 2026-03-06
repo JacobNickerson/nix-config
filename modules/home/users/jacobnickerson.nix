@@ -1,7 +1,5 @@
 { inputs, config, pkgs, ... }: let
 	imports = [
-		inputs.nvibrant.homeModules.default
-		# My Modules
 		../alacritty.nix
 		../btop.nix
 		../fastfetch.nix
@@ -13,6 +11,7 @@
 		../hyprlock/hyprlock.nix
 		../mpvpaper/mpvpaper.nix
 		../neovim.nix
+		../nvibrant.nix
 		../tmux.nix
 		../vesktop/vesktop.nix
 		../vivaldi/vivaldi.nix
@@ -38,8 +37,8 @@ in {
 			playerctl
 			neo
 			piper
-      zoom-us
-      moonlight-qt
+			zoom-us
+			moonlight-qt
 		];
 
 		sessionVariables = {
@@ -72,10 +71,6 @@ in {
 	};
 
 	services = {
-		nvibrant = {
-			enable = true;
-			vibrancy = [ "100%" "100%" "175%" ];
-		};
 		swaync.enable = true;
 	};
 

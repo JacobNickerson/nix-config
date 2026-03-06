@@ -23,7 +23,7 @@
       overlays = [ nvibrant.overlays.default ];
     };
 
-    mkHost = { hostname, hostModule, hostConfig }:
+    mkHost = { hostname, hostModule, hostConfig, users ? [] }:
       nixpkgs.lib.nixosSystem {
         inherit system pkgs;
         specialArgs = { inherit inputs; };
@@ -36,9 +36,8 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; hostname = hostname; };
-            home-manager.users.jacobnickerson = import ./modules/home/users/jacobnickerson.nix;
           }
-        ];
+        ] ++ users;
       };  
   in {
     nixosConfigurations = {
@@ -46,11 +45,13 @@
         hostname = "NixJake";
         hostModule = ./hosts/NixJake/NixJake.nix;
         hostConfig = ./configs/NixJake.nix;
+        users = [ ./modules/home/users/jacobnickerson.nix ];
       };
       PortaJake = mkHost {
         hostname = "PortaJake";
         hostModule = ./hosts/PortaJake/PortaJake.nix;
         hostConfig = ./configs/PortaJake.nix;
+        users = [ ./modules/home/users/jacobnickerson.nix ];
       };
     };
   };

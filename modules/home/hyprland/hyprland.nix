@@ -2,10 +2,11 @@
 let
 	monitors = {
 		"NixJake" = [ ",3840x2160@240,auto,1.2,bitdepth,10" ",3840x2160@240,auto,1.2,mirror,DP-1" ];
-		"PortaJake" = [ ",preferred,auto,1" ",1920x1080@60,auto,1"];
+		"PortaJake" = [ ",preferred,auto,1" ",3840x2160@120,auto,1"];
 	};
 	extra_execs = {
-		"NixJake" = [ "hyprctl output create headless virtual" ];
+		"NixJake" = [ ];
+		"PortaJake" = [ ];
 	};
 	monitor_match = monitors.${hostname} or null;
 	monitor =

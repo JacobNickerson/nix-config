@@ -1,8 +1,6 @@
 { config, lib, pkgs, systemSettings, userSettings, ... }:
 
 {
-#   nixpkgs.config.allowUnfree = true;
-
   programs = {
     gamemode = {
       enable = true;

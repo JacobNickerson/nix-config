@@ -1,7 +1,8 @@
 { config, lib, hostname, ... }:
 let
+	NixJakeMonitor = "DP-4";
 	monitors = {
-		"NixJake" = [ ",3840x2160@240,auto,1.2,bitdepth,10" ",3840x2160@240,auto,1.2,mirror,DP-1" ];
+		"NixJake" = [ "${NixJakeMonitor},3840x2160@240,auto,1.2,bitdepth,10" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
 		"PortaJake" = [ ",preferred,auto,1" ",3840x2160@120,auto,1"];
 	};
 	extra_execs = {

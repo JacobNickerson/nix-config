@@ -8,6 +8,8 @@
   imports = [
     ../modules/sddm/sddm.nix
     ../modules/gaming.nix
+    ../modules/android.nix
+    ../modules/iphone.nix
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

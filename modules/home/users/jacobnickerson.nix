@@ -11,6 +11,7 @@
 		../hyprlock/hyprlock.nix
 		../mpvpaper/mpvpaper.nix
 		../neovim.nix
+		../openssh.nix
 		../nvibrant.nix
 		../tmux.nix
 		../vesktop/vesktop.nix

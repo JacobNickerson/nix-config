@@ -2,6 +2,7 @@
 {
   imports = [
     ./common.nix
+    ../modules/openssh/NixJake.nix
   ];
 
   environment.systemPackages = with pkgs; [

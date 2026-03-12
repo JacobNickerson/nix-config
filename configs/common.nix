@@ -80,14 +80,6 @@
 
   programs.nix-ld.enable = true;
 
-  users.users.jacobnickerson = {
-    isNormalUser = true;
-    description = "Jacob Nickerson";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
-    packages = with pkgs; [];
-  };
-
   environment.systemPackages = with pkgs; [
     vim
     git

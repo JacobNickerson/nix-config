@@ -19,7 +19,14 @@
 		../wofi.nix
 	];
 in {
-	home-manager.users.jacobnickerson = {
+	config.users.users.jacobnickerson = {
+		isNormalUser = true;
+		description = "Jacob Nickerson";
+		extraGroups = [ "networkmanager" "wheel" ];
+		shell = pkgs.fish;
+		packages = with pkgs; [];
+	};
+	config.home-manager.users.jacobnickerson = {
 		inherit imports;
 		fonts.fontconfig.enable = true;
 

@@ -56,8 +56,8 @@
 		};
 
 		network = {
-			format-wifi = "{signalStrength}%  ";
-			format-ethernet = "󰈀 {ipaddr}";
+			format-wifi = "{ipaddr} ({signalStrength}%  )";
+			format-ethernet = "{ipaddr} 󰈀";
 			format-disconnected = "󰌙";
 			on-click = "nm-connection-editor";
 			on-click-right = "nmcli device wifi rescan";

@@ -165,6 +165,7 @@ in
 				"$mainMod, L, exec, sleep 0.5 && hyprctl dispatch dpms off" 
 				"CTRL_SUPER, L, exec, sleep 0.5 && hyprctl dispatch dpms off && hyprlock"
 				", Print, exec, hyprshot -m region"
+				"$mainMod, Print, exec, hyprshot -z -m region"
 
 				"$mainMod,h,movefocus,l"
 				"$mainMod,l,movefocus,r"

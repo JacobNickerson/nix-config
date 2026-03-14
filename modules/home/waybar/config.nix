@@ -74,15 +74,15 @@
 
 		memory = {
 			interval = 30;
-			format = "{}%  ";
-			format-alt = "{used:0.1f}G ";
+			format = "{used:0.1f}G ";
+			format-alt = "{}%  ";
 			max-length = 10;
 		};
 
 		cpu = {
-			format = "{}%  ";
-			format-alt = "{usage}% ";
-			tooltip = false;
+			format = "{usage}% | {load}% ";
+			format-alt = "{avg_frequency}Hz ";
+			tooltip = true;
 		};
 
 		"custom/power" = {

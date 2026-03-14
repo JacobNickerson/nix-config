@@ -77,11 +77,14 @@
 			format = "{used:0.1f}G ";
 			format-alt = "{}%  ";
 			max-length = 10;
+			on-click-middle = "alacritty -e btop";
+			tooltip = true;
 		};
 
 		cpu = {
 			format = "{usage}% | {load}% ";
 			format-alt = "{avg_frequency}Hz ";
+			on-click-middle = "alacritty -e btop";
 			tooltip = true;
 		};
 

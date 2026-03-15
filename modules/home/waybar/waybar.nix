@@ -22,7 +22,7 @@ in {
 			Type = "simple";
 			ExecStart = ''${pkgs.systemd}/bin/systemd-inhibit \
 			--what=sleep:idle \
-			--why='Waybar toggle' \
+			--why='Waybar blocking sleep indefinitely' \
 			sleep infinity'';
 			Restart = "no";
 		};

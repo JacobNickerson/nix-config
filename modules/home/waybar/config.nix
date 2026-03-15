@@ -125,7 +125,7 @@
 				time-inhibited = "󰦉";
 			};
 			on-click = "~/.config/waybar/scripts/inhibit-sleep.sh toggle";
-			on-click-middle = "alacritty -e ~/.config/waybar/scripts/inhibit-sleep.sh menu";
+			on-click-middle = "~/.config/waybar/scripts/inhibit-sleep.sh menu";
 			on-click-right = "hyprctl dispatch dpms off";
 			return-type = "json";
 			signal =  8;

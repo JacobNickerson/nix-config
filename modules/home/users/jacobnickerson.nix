@@ -14,6 +14,7 @@
 		../neovim.nix
 		../openssh.nix
 		../nvibrant.nix
+		../nvrun.nix
 		../tmux.nix
 		../vesktop/vesktop.nix
 		../vivaldi/vivaldi.nix

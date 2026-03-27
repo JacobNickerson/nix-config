@@ -23,7 +23,8 @@ let
 	
 in
 {
-	home.file."${config.home.homeDirectory}/.config/scripts/start_tmux.sh".source = ../../start_tmux.sh; # silly exec-once script
+	home.file."${config.home.homeDirectory}/.config/scripts/start_tmux.sh".source = ../start_tmux.sh; # silly exec-once script
+	home.file."${config.home.homeDirectory}/.config/hypr/shaders/vibrance-shader.glsl".source = ./vibrance-shader.glsl;
 	systemd.user.targets.hyprland-ready = {
 		Unit = {
 			Description = "Custom target activated after Hyprland compositor initialization";
@@ -52,6 +53,7 @@ in
 				"XCURSOR_SIZE,24"
 				"HYPRCURSOR_SIZE,24"
 				"HYPRSHOT_DIR,screenshots"
+				"AQ_DRM_DEVICES,/dev/dri/card2"
 			];
 
 			debug = {
@@ -91,6 +93,8 @@ in
 					passes = 1;
 					vibrancy = 0.1696;
 				};
+
+				screen_shader = "${config.home.homeDirectory}/.config/hypr/shaders/vibrance-shader.glsl";
 			};
 
 			animations = {

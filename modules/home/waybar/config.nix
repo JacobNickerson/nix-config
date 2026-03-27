@@ -56,12 +56,13 @@
 		};
 
 		network = {
-			format-wifi = "{ipaddr} ({signalStrength}%  )";
-			format-ethernet = "{ipaddr} 󰈀";
+			format-wifi = "{signalStrength}%  ";
+			format-ethernet = "󰈀";
 			format-disconnected = "󰌙";
-			on-click = "nm-connection-editor";
+			on-click = "alacritty -e nmtui";
 			on-click-right = "nmcli device wifi rescan";
 			on-click-middle = "nmcli networking off && nmcli networking on";
+			tooltip-format = "{ipaddr}";
 		};
 
 		pulseaudio = {

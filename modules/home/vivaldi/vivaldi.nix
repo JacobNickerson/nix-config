@@ -9,5 +9,9 @@
 			{ id = "nngceckbapebfimnlniiiahkandclblb"; }  # Bitwarden
 			{ id = "jghecgabfgfdldnmbfkhmffcabddioke"; }  # Volume Master
 		];
+
+		commandLineArgs = [
+			"--disable-features=WakeLock"
+		];
 	};
 }

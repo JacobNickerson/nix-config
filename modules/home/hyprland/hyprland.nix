@@ -55,6 +55,10 @@ in
 				"HYPRSHOT_DIR,screenshots"
 			];
 
+			debug = {
+				disable_logs = false;
+			};
+
 			general = {
 				gaps_in = 3;
 				gaps_out = 0;

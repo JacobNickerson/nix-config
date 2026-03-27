@@ -20,6 +20,16 @@
     nvidiaSettings = true;
   };
 
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    NVD_BACKEND = "direct";
+  };
+
+  boot.kernelParams = [
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"  # May cause instability, remove if so
+  ];  
+
   # Filesystem options
   fileSystems."/".options = lib.mkForce [ "subvol=@" "compress=zstd:3" "noatime" ];
   fileSystems."/home".options = lib.mkForce [ "subvol=@home" "compress=zstd:3" "noatime" ];

@@ -4,7 +4,12 @@
   programs = {
     gamemode = {
       enable = true;
-      settings = {};
+      settings = {
+        custom = {
+          start = "/run/current-system/sw/bin/systemctl --user stop mpvpaper.service";
+          end = "/run/current-system/sw/bin/systemctl --user start mpvpaper.service";
+        };
+      };
     };
     gamescope = {
       enable = true;
@@ -19,7 +24,4 @@
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [
-  ];
 }

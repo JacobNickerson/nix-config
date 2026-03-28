@@ -1,8 +1,8 @@
 { config, lib, hostname, ... }:
 let
-	NixJakeMonitor = "DP-4";
+	NixJakeMonitor = "DP-1";
 	monitors = {
-		"NixJake" = [ "${NixJakeMonitor},3840x2160@240,auto,1.2,bitdepth,10" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
+		"NixJake" = [ "${NixJakeMonitor},3840x2160@120,auto,1.2,bitdepth,10" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
 		"PortaJake" = [ "eDP-1,preferred,auto,1" ",3840x2160@120,auto,1.5"];
 	};
 	extra_execs = {
@@ -23,6 +23,7 @@ let
 in
 {
 	home.file."${config.home.homeDirectory}/.config/scripts/start_tmux.sh".source = ../start_tmux.sh; # silly exec-once script
+	home.file."${config.home.homeDirectory}/.config/hypr/shaders/vibrance-shader.glsl".source = ./vibrance-shader.glsl;
 	systemd.user.targets.hyprland-ready = {
 		Unit = {
 			Description = "Custom target activated after Hyprland compositor initialization";
@@ -53,6 +54,7 @@ in
 				"XCURSOR_SIZE,24"
 				"HYPRCURSOR_SIZE,24"
 				"HYPRSHOT_DIR,screenshots"
+				"AQ_DRM_DEVICES,/dev/dri/card2"
 			];
 
 			debug = {
@@ -92,6 +94,8 @@ in
 					passes = 1;
 					vibrancy = 0.1696;
 				};
+
+				#screen_shader = "${config.home.homeDirectory}/.config/hypr/shaders/vibrance-shader.glsl";
 			};
 
 			animations = {

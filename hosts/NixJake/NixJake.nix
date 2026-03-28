@@ -15,15 +15,25 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
+    prime = {
+      reverseSync.enable = true;
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
+      amdgpuBusId = "PCI:15:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
     powerManagement.enable = true;
+    powerManagement.finegrained = true;
     open = true;
     nvidiaSettings = true;
   };
 
   environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "nvidia";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    NVD_BACKEND = "direct";
+    WLR_DRM_DEVICES = "/dev/dri/card2";
+    MESA_LOADER_DRIVER_OVERRIDE = "radeonsi";
+    __GLX_VENDOR_LIBRARY_NAME = "mesa";
+    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+    LIBVA_DRIVER_NAME = "radeonsi";
   };
 
   boot.kernelParams = [

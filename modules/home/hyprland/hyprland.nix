@@ -1,24 +1,25 @@
 { config, lib, hostname, ... }:
 let
 	NixJakeMonitor = "DP-4";
-	monitors = {
-		"NixJake" = [ "${NixJakeMonitor},3840x2160@240,auto,1.2,bitdepth,10" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
-		"PortaJake" = [ "eDP-1,preferred,auto,1" ",3840x2160@120,auto,1.5"];
+	extra_config = {
+		"NixJake" = {
+			monitor = [ "${NixJakeMonitor},3840x2160@240,auto,1.2,bitdepth,10" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
+			exec-once = [];
+		};
+		"PortaJake" = {
+			monitor = [ "eDP-1,preferred,auto,1" ",3840x2160@120,auto,1.5"];
+			exec-once = [];
+		};
 	};
-	extra_execs = {
-		"NixJake" = [ ];
-		"PortaJake" = [ ];
-	};
-	monitor_match = monitors.${hostname} or null;
-	monitor =
-	if monitor_match != null
-		then monitor_match
-		else [ ",preferred,auto,1" ];
-	exec_match = extra_execs.${hostname} or null;
-	extra_exec =
-	if exec_match != null
-		then exec_match 
-		else [];
+	
+	host_match = extra_config.${hostname} or null;
+	extra_configs =
+	if host_match != null
+		then host_match
+		else {
+			monitor = [ ",preferred,auto,1" ];
+			exec-once = [];
+		};
 	
 in
 {
@@ -32,9 +33,7 @@ in
 		enable = true;
 		systemd.enable = false;
 
-		settings = {
-			monitor = monitor; 
-
+		settings = extra_config // {
 			"$terminal" = "alacritty";
 			"$fileManager" = "dolphin";
 			"$menu" = "(pidof wofi && kill $(pidof wofi)); wofi";
@@ -47,7 +46,7 @@ in
 				"hyprctl dispatch workspace 3 && $terminal"
 				"~/.config/scripts/start_tmux.sh 0"
 				"systemctl --user start hyprland-ready.target"  
-			] ++ extra_exec;
+			] ++ extra_configs.exec-once;
 
 			env = [
 				"XCURSOR_SIZE,24"
@@ -56,7 +55,7 @@ in
 			];
 
 			debug = {
-				disable_logs = false;
+				disable_logs = true;
 			};
 
 			general = {

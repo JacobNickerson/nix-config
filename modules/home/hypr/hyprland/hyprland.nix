@@ -23,7 +23,7 @@ let
 	
 in
 {
-	home.file."${config.home.homeDirectory}/.config/scripts/start_tmux.sh".source = ../start_tmux.sh; # silly exec-once script
+	home.file."${config.home.homeDirectory}/.config/scripts/start_tmux.sh".source = ../../start_tmux.sh; # silly exec-once script
 	systemd.user.targets.hyprland-ready = {
 		Unit = {
 			Description = "Custom target activated after Hyprland compositor initialization";

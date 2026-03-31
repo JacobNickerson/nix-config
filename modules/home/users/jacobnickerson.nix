@@ -6,9 +6,10 @@
 		../fcitx5.nix
 		../fish.nix
 		../git.nix
-		../hypridle.nix
-		../hyprland/hyprland.nix
-		../hyprlock/hyprlock.nix
+		../hypr/hypr.nix
+		# ../hypridle.nix
+		# ../hyprland/hyprland.nix
+		# ../hyprlock/hyprlock.nix
 		../mpvpaper/mpvpaper.nix
 		../neovim.nix
 		../openssh.nix
@@ -47,6 +48,8 @@ in {
 				piper
 				zoom-us
 				moonlight-qt
+				lsfg-vk
+				lsfg-vk-ui
 			];
 
 			sessionVariables = {

@@ -32,11 +32,11 @@
   # Filesystem options
   fileSystems."/".options = lib.mkForce [ "subvol=@" "compress=zstd:3" "noatime" ];
   fileSystems."/home".options = lib.mkForce [ "subvol=@home" "compress=zstd:3" "noatime" ];
-  fileSystems."/swap".options = lib.mkForce [ "subvol=@swap" "compress=no" "nodatacow" "noatime" ];
-  swapDevices = lib.mkForce [
-      {
-        device = "/swap/swapfile";
-        size = 4 * 1024;
-      }
-  ];
+  #fileSystems."/swap".options = lib.mkForce [ "subvol=@swap" "compress=no" "nodatacow" "noatime" ];
+  #swapDevices = lib.mkForce [
+  #    {
+  #      device = "/swap/swapfile";
+  #      size = 4 * 1024;
+  #    }
+  #];
 }

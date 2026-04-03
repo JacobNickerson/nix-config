@@ -1,6 +1,6 @@
 { config, lib, hostname, ... }:
 let
-	NixJakeMonitor = "DP-4";
+	NixJakeMonitor = "desc:Samsung Electric Company Odyssey G81SF HNBYA00610";
 	extra_config = {
 		"NixJake" = {
 			monitor = [ "${NixJakeMonitor},3840x2160@240,auto,1.2,bitdepth,10" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
@@ -33,7 +33,7 @@ in
 		enable = true;
 		systemd.enable = false;
 
-		settings = extra_config // {
+		settings = extra_configs // {
 			"$terminal" = "alacritty";
 			"$fileManager" = "dolphin";
 			"$menu" = "(pidof wofi && kill $(pidof wofi)); wofi";

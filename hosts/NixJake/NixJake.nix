@@ -22,7 +22,7 @@
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "radeonsi";
-    LIBVA_DEVICE = "/dev/dri/by-path/pci-0000:0f:00.0-render";
+    LIBVA_DEVICE = "/dev/dri/by-path/pci-0000:79:00.0-render";
   };
 
   boot.kernelParams = [

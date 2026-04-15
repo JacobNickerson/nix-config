@@ -68,7 +68,7 @@
 		pulseaudio = {
 			format = "{volume}% {icon}";
 			format-icons = [ "" "" "" ];
-			format-muted = "{volume}% --MUTED--";
+			format-muted = "{volume}% ";
 			on-click = "pavucontrol";
 			on-click-right = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
 		};

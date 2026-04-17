@@ -28,6 +28,11 @@
   boot.kernelParams = [
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"  # May cause instability, remove if so
   ];  
+  boot.loader.limine.extraEntries = ''
+    /Windows
+      protocol: efi
+      path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+  '';
 
   # Filesystem options
   fileSystems."/".options = lib.mkForce [ "subvol=@" "compress=zstd:3" "noatime" ];

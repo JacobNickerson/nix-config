@@ -3,6 +3,7 @@
   imports = [
     ./common.nix
     ../modules/openssh/NixJake.nix
+    ../modules/virt-manager.nix
   ];
 
   environment.systemPackages = with pkgs; [

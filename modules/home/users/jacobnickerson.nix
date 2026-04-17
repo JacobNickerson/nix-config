@@ -7,9 +7,6 @@
 		../fish.nix
 		../git.nix
 		../hypr/hypr.nix
-		# ../hypridle.nix
-		# ../hyprland/hyprland.nix
-		# ../hyprlock/hyprlock.nix
 		../mpvpaper/mpvpaper.nix
 		../neovim.nix
 		../openssh.nix
@@ -24,7 +21,7 @@ in {
 	config.users.users.jacobnickerson = {
 		isNormalUser = true;
 		description = "Jacob Nickerson";
-		extraGroups = [ "networkmanager" "wheel" "gamemode" ];
+		extraGroups = [ "networkmanager" "wheel" "gamemode" "libvirtd" ];
 		shell = pkgs.fish;
 		packages = with pkgs; [];
 	};

@@ -10,6 +10,7 @@ let
 		};
 		"PortaJake" = {
 			monitor = [ "eDP-1,preferred,auto,1" ",3840x2160@120,auto,1.5"];
+			exec-once = [ ];
 		};
 	};
 	
@@ -19,6 +20,7 @@ let
 		then host_match
 		else {
 			monitor = [ ",preferred,auto,1" ];
+			exec-once = [ ];
 		};
 	
 in

@@ -31,6 +31,12 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/swap" =
+    { device = "/dev/disk/by-uuid/7bbb5d38-75bb-4db0-911c-5f942f39b418";
+      fsType = "btrfs";
+      options = [ "subvol=@swap" ];
+    };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

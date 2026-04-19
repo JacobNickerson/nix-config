@@ -3,12 +3,13 @@ let
 	NixJakeMonitor = "desc:Samsung Electric Company Odyssey G81SF HNBYA00610";
 	extra_config = {
 		"NixJake" = {
-			monitor = [ "${NixJakeMonitor},3840x2160@240,auto,1.2,bitdepth,10" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
-			exec-once = [];
+			monitor = [ "VIRTUAL,3840x2160@240,auto,1.2,bitdepth,10" "${NixJakeMonitor},3840x2160@240,auto,1.2,bitdepth,10,mirror,VIRTUAL" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
+			exec-once = [
+				"hyprctl output create headless VIRTUAL"
+			];
 		};
 		"PortaJake" = {
 			monitor = [ "eDP-1,preferred,auto,1" ",3840x2160@120,auto,1.5"];
-			exec-once = [];
 		};
 	};
 	
@@ -18,7 +19,6 @@ let
 		then host_match
 		else {
 			monitor = [ ",preferred,auto,1" ];
-			exec-once = [];
 		};
 	
 in

@@ -27,7 +27,6 @@
       size = 20 * 1024; 
     }
   ];
-  boot.initrd.systemd.enable = true;
 
   # HDMI Audio
   services.pipewire.wireplumber.extraConfig."51-alsa-auto-switch" = {

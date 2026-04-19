@@ -13,18 +13,21 @@
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.limine.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.kernelParams = [
-    "zswap.enabled=1"
-    "zswap.compressor=zstd"
-    "zswap.max_pool_percent=25"
-    "zswap.shrinker_enabled=1"
-  ];
+  boot = {
+    loader = {
+      systemd-boot.enable = false;
+      limine.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "zswap.enabled=1"
+      "zswap.compressor=zstd"
+      "zswap.max_pool_percent=25"
+      "zswap.shrinker_enabled=1"
+    ];
+    initrd.systemd.enable = true;
+  };
 
   networking.wireless.enable = false;
   networking.wireless.iwd.enable = true;

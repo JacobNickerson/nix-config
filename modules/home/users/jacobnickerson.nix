@@ -32,7 +32,7 @@ in {
 		home = {
 			username = "jacobnickerson";
 			homeDirectory = "/home/jacobnickerson";
-			stateVersion = "26.05"; 
+			stateVersion = "25.11"; 
 
 			packages = with pkgs; [
 				bitwarden-cli

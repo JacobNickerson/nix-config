@@ -112,7 +112,6 @@
 			return-type = "json";
 			exec-if = "which swaync-client";
 			exec = "swaync-client -swb";
-			# on-click = "sleep 0.1 && task-waybar";
 			on-click = "sleep 0.1 && swaync-client -t";
 			escape = true;
 		};
@@ -171,7 +170,8 @@
 			on-click = "activate";
 			disable-scroll = false;
 			persistent-workspaces = {
-				"*" = 5;
+				"VIRTUAL" = [ 1 2 3 4 5 ];
+				"eDP-1" = [ 1 2 3 4 5 ];
 			};
 		};
 

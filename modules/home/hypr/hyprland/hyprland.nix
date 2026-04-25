@@ -3,7 +3,7 @@ let
 	NixJakeMonitor = "desc:Samsung Electric Company Odyssey G81SF HNBYA00610";
 	extra_config = {
 		"NixJake" = {
-			monitor = [ "VIRTUAL,3840x2160@240,auto,1.2,bitdepth,10" "${NixJakeMonitor},3840x2160@240,auto,1.2,bitdepth,10,mirror,VIRTUAL" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
+			monitor = [ "VIRTUAL,3840x2160@239.99600,auto,1.2,bitdepth,10" "${NixJakeMonitor},3840x2160@239.99600,auto,1.2,bitdepth,10,mirror,VIRTUAL" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
 			exec-once = [
 				"hyprctl output create headless VIRTUAL"
 			];

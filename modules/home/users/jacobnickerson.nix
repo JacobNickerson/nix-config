@@ -61,6 +61,8 @@ in {
 				ll   = "eza -l --color=always --group-directories-first --icons";
 				lt   = "eza -aT --color=always --group-directories-first --icons";
 				ldot = "eza -a | grep -e '^\\.'";
+				dev         = "nix develop --command fish";
+				tmp         = "nix-shell --command fish -p";
 				tarnow      = "tar -acf ";
 				untar       = "tar -zxvf ";
 				wget        = "wget -c ";

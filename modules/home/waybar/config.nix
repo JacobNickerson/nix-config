@@ -231,5 +231,9 @@
 				on-scroll-down = "~/.config/waybar/scripts/backlight.sh down";
 				tooltip = false;
 		};
+
+		temperature = {
+			thermal-zone = 1;
+		};
 	};
 }

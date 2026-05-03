@@ -1,4 +1,5 @@
 { inputs, config, pkgs, ... }: let
+	home_dir = "/home/jacobnickerson";
 	imports = [
 		../alacritty.nix
 		../btop.nix
@@ -10,6 +11,7 @@
 		../mpvpaper/mpvpaper.nix
 		../neovim.nix
 		../openssh.nix
+		(import ../nix-helper.nix { flake_path = "${home_dir}/nix-config"; })
 		../nvibrant.nix
 		../tmux.nix
 		../vesktop/vesktop.nix
@@ -31,7 +33,7 @@ in {
 
 		home = {
 			username = "jacobnickerson";
-			homeDirectory = "/home/jacobnickerson";
+			homeDirectory = home_dir;
 			stateVersion = "25.11"; 
 
 			packages = with pkgs; [

@@ -15,6 +15,12 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.pathsToLink = [ "/share/zsh" ];  # NOTE: Required for zsh completion of system programs
   boot = {                                     # TODO: Find a way to include this with the zsh module
+    loader = {
+      systemd-boot.enable = false;
+      limine.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = 600;
+    };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "zswap.enabled=1"

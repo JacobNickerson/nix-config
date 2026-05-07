@@ -63,6 +63,7 @@ in {
 				la   = "eza -a --color=always --group-directories-first --icons";
 				ll   = "eza -l --color=always --group-directories-first --icons";
 				lt   = "eza -aT --color=always --group-directories-first --icons";
+				lg   = "eza -alg --color=always --group-directories-first --icons";
 				ldot = "eza -a | grep -e '^\\.'";
 				dev         = "nix develop --command fish";
 				tmp         = "nix-shell --command fish -p";
@@ -74,12 +75,7 @@ in {
 				dir         = "dir --color=auto";
 				vdir        = "vdir --color=auto";
 				grep        = "grep --color=auto";
-				fgrep       = "fgrep --color=auto";
-				egrep       = "egrep --color=auto";
-				hw          = "hwinfo --short";
-				big         = "expac -H M '%m\t%n' | sort -h | nl";
 				jctl        = "journalctl -p 3 -xb";
-				rip         = "expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl";
 			};
 		};
 

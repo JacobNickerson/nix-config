@@ -25,16 +25,21 @@
       options = [ "subvol=@home" ];
     };
 
+  fileSystems."/swap" =
+    { device = "/dev/disk/by-uuid/faacdbe2-cfc4-441e-8ba7-ba7f3100d5ba";
+      fsType = "btrfs";
+      options = [ "subvol=@swap" ];
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/7526-2DCB";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/swap" =
-    { device = "/dev/disk/by-uuid/faacdbe2-cfc4-441e-8ba7-ba7f3100d5ba";
-      fsType = "btrfs";
-      options = [ "subvol=@swap" ];
+  fileSystems."/net/gubb-storage" =
+    { device = "//192.168.122.134/gubb-storage";
+      fsType = "cifs";
     };
 
   swapDevices = [ ];

@@ -6,19 +6,14 @@
 
 {
   imports = [
-    ../modules/sddm/sddm.nix
-    ../modules/gaming.nix
     ../modules/android.nix
+    ../modules/gaming.nix
     ../modules/iphone.nix
+    ../modules/limine.nix
+    ../modules/sddm/sddm.nix
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   boot = {
-    loader = {
-      systemd-boot.enable = false;
-      limine.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "zswap.enabled=1"

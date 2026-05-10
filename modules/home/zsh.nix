@@ -34,7 +34,6 @@
       autoload -Uz colors && colors
       export MANROFFOPT="-c"
       PROMPT='%F{#e18384}%n%F{cyan}@%F{#e18384}%m%F{cyan}>%~ $ %f'
-
       path=(
         "$HOME/.local/bin"
         $path
@@ -46,7 +45,7 @@
       }
 
       TRAPINT() {
-		zle && zle kill-whole-line
+				zle && zle kill-whole-line
       }
 
       fastfetch

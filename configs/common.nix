@@ -13,7 +13,8 @@
     ../modules/sddm/sddm.nix
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  boot = {
+  environment.pathsToLink = [ "/share/zsh" ];  # NOTE: Required for zsh completion of system programs
+  boot = {                                     # TODO: Find a way to include this with the zsh module
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "zswap.enabled=1"

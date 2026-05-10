@@ -6,7 +6,6 @@
 		../btop.nix
 		../fastfetch.nix
 		../fcitx5.nix
-		../fish.nix
 		../git.nix
 		../hypr/hypr.nix
 		../mpvpaper/mpvpaper.nix
@@ -19,14 +18,16 @@
 		../vivaldi/vivaldi.nix
 		../waybar/waybar.nix
 		../wofi.nix
+		../zsh.nix
 	];
 in {
 	config.users.users.jacobnickerson = {
 		isNormalUser = true;
 		description = "Jacob Nickerson";
 		extraGroups = [ "networkmanager" "wheel" "gamemode" "libvirtd" ];
-		shell = pkgs.fish;
-		packages = with pkgs; [];
+		shell = pkgs.zsh;
+		ignoreShellProgramCheck = true; # NOTE: Silences a warning about shell not being enabled
+		packages = with pkgs; [];       #       Make sure the selected shell is imported as a module!
 	};
 	config.home-manager.users.jacobnickerson = {
 		inherit imports;
@@ -65,8 +66,8 @@ in {
 				lt   = "eza -aT --color=always --group-directories-first --icons";
 				lg   = "eza -alg --color=always --group-directories-first --icons";
 				ldot = "eza -a | grep -e '^\\.'";
-				dev         = "nix develop --command fish";
-				tmp         = "nix-shell --command fish -p";
+				dev         = "nix develop --command zsh";
+				tmp         = "nix-shell --command zsh -p";
 				tarnow      = "tar -acf ";
 				untar       = "tar -zxvf ";
 				wget        = "wget -c ";

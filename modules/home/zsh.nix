@@ -3,7 +3,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-	defaultKeymap = "viins";
+    defaultKeymap = "viins";
     autosuggestion = {
       enable = true;
 
@@ -22,8 +22,8 @@
       ];
 
       styles = {
-		alias = "fg=green,bold";
-		builtin = "fg=green,bold";
+        alias = "fg=green,bold";
+        builtin = "fg=green,bold";
         command = "fg=green,bold";
         unknown-token = "fg=red,bold";
         reserved-word = "fg=yellow";

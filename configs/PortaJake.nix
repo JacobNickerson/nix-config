@@ -2,6 +2,15 @@
 {
   imports = [
     ./common.nix
+    (import ../modules/nas.nix {
+      use_vpn = true;
+    })
+    ../modules/virt-manager.nix
+    (import ../modules/wireguard-client.nix {
+     address = "10.100.0.2/32";
+     server_endpoint = "10.0.0.188:42167";
+     server_public_key = "XA1BWBzT694ogVhG1Ry6MQ4l8OrXuObfr00BcSvfLxs=";
+    })
   ];
 
   # Battery life settings

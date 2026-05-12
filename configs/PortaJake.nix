@@ -28,7 +28,7 @@
   systemd.sleep.settings.Sleep = { 
     SuspendState = "mem";
     HibernateMode = "platform";
-    HibernateDelaySec = "10min";
+    HibernateDelaySec = "60min";
   };
   swapDevices = lib.mkForce [
     {

@@ -1,18 +1,18 @@
-{ address }:
-{ config, ... }:
-let
-  server_public_key = "dH6/8lXlvxUIbpvdimb6iVr0A+3iwP1PywxAxeRx5wQ=";
-  server_endpoint = "192.168.122.134:42167";
-in
+{ address, server_public_key, server_endpoint }:
+{ config, lib, ... }:
 {
   networking.wg-quick.interfaces.wg0 = {
     generatePrivateKeyFile = true;
     privateKeyFile = "/etc/wireguard/keys/wg0.key";
+    autostart = false;
 
+    dns = [ 
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
     address = [
       address
     ];
-
     peers = [
       {
         publicKey = server_public_key;

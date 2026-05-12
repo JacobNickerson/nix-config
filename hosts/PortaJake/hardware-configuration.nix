@@ -37,11 +37,6 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/net/gubb-storage" =
-    { device = "//192.168.122.134/gubb-storage";
-      fsType = "cifs";
-    };
-
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

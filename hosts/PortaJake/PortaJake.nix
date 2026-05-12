@@ -21,9 +21,4 @@
   fileSystems."/".options = [ "compress=zstd:3" "noatime" ];
   fileSystems."/home".options = [ "compress=zstd:3" "noatime" ];
   fileSystems."/swap".options = [ "nodatacow" "nodatasum" "noatime" ];
-  fileSystems."/net/gubb-storage".options = [
-    "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users"  # Prevent hanging when not able to connect
-    "credentials=/etc/nixos/smb-secrets"
-    "uid=1000,gid=100" # Mount as current user
-  ];
 }

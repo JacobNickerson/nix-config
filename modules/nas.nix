@@ -1,7 +1,7 @@
 { use_vpn }:
 { config, pkgs, ... }:
 let
-	server_address = if use_vpn then "10.100.0.1" else "192.168.x.x";  # TODO: Set static IP for server, update here
+	server_address = if use_vpn then "10.100.0.1" else "192.168.5.33";
 in
 {
   environment.systemPackages = with pkgs; [

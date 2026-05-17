@@ -10,7 +10,7 @@
 		../hypr/hypr.nix
 		../mpvpaper/mpvpaper.nix
 		../neovim.nix
-		../openssh.nix
+		../openssh/openssh.nix  # TODO: Proper options so that host selection can be done after import time
 		(import ../nix-helper.nix { flake_path = "${home_dir}/nix-config"; })
 		../nvibrant.nix
 		../tmux.nix

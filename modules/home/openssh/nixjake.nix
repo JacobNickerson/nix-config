@@ -10,10 +10,11 @@
         identityFile = [ "~/.ssh/github" ];
         identitiesOnly = true;
       };
-      "nixjake" = {
-        hostname = "192.168.5.67";
+      "gubbserver" = {
+        hostname = "192.168.5.33";
+        port = 42067;
         user = "jacobnickerson";
-        identityFile = [ "~/.ssh/nixjake" ];
+        identityFile = [ "~/.ssh/gubbserver" ];
         identitiesOnly = true;
       };
       "portajake" = {

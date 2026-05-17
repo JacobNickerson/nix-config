@@ -21,6 +21,7 @@
       };
       "nixjake" = {
         hostname = "192.168.5.67";
+        port = 42067;
         user = "jacobnickerson";
         identityFile = [ "~/.ssh/nixjake" ];
         identitiesOnly = true;
@@ -34,6 +35,7 @@
       };
       "portajake" = {
         hostname = "192.168.5.42";
+        port = 42067;
         user = "jacobnickerson";
         identityFile = [ "~/.ssh/portajake" ];
         identitiesOnly = true;

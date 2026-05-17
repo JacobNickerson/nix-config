@@ -50,4 +50,8 @@
      }
   ];
   #########################
+
+  ### MISCELLANEOUS ###
+  services.ratbagd.enable = true;
+
 }

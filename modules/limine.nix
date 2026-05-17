@@ -1,13 +1,29 @@
 { config, pkgs, lib, ... }:
+let
+  cfg = config.myModules.limine;
+in
 {
-  boot.loader = lib.mkForce {
-    systemd-boot.enable = false;
-    limine.enable = true;
-    limine.secureBoot.enable = true;
-    efi.canTouchEfiVariables = true;
+  options.myModules.limine = {
+    enable = lib.mkEnableOption "Limine bootloader with secure boot";
+
+    timeout = lib.mkOption {
+      type = lib.types.int;
+      default = 5;
+      description = "Auto-selection timer in seconds";
+    };
   };
 
-  environment.systemPackages = with pkgs; [
-    sbctl
-  ];
+  config = lib.mkIf cfg.enable {
+    boot.loader = lib.mkForce {
+      systemd-boot.enable = false;
+      limine.enable = true;
+      limine.secureBoot.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = cfg.timeout;
+    };
+
+    environment.systemPackages = with pkgs; [
+      sbctl
+    ];
+  };
 }

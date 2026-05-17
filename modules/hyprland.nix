@@ -1,8 +1,20 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  cfg = config.myModules.hyprland;
+in
 {
-  programs.uwsm.enable = true;
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
+  options.myModules.hyprland = {
+    enable = lib.mkEnableOption "Enable Hyprland";
+    UWSM = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable management by UWSM for Hyprland";
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    programs.hyprland.enable = true;
+    programs.hyprland.withUWSM = cfg.UWSM;
+    programs.uwsm.enable = cfg.UWSM;
   };
 }

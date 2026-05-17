@@ -1,11 +1,20 @@
-{ config, pkgs, ...}:
+{ config, pkgs, lib, ... }:
+let
+	cfg = config.myModules.iphone-tools;
+in
 {
-	services.usbmuxd = {
-		enable = true;
-		package = pkgs.usbmuxd2;
+	options.myModules.iphone-tools = {
+		enable = lib.mkEnableOption "Enable iPhone tools and services";
 	};
-	environment.systemPackages = with pkgs; [
-		libimobiledevice
-		ifuse
-	];
+
+	config = lib.mkIf cfg.enable {
+		services.usbmuxd = {
+			enable = true;
+			package = pkgs.usbmuxd2;
+		};
+		environment.systemPackages = with pkgs; [
+			libimobiledevice
+			ifuse
+		];
+	};
 }

@@ -6,23 +6,26 @@
 
 {
   imports = [
-    ../modules/android.nix
-    ../modules/fcitx5.nix
-    ../modules/gaming.nix
-    ../modules/hyprland.nix
-    ../modules/iphone.nix
-    ../modules/limine.nix
-    ../modules/sddm/sddm.nix
+    ../modules/myModules.nix
   ];
+  ### MY MODULES ###
+  myModules = {
+    android-tools.enable = true; 
+    fcitx5.enable = true; 
+    gaming.enable = true;
+    hyprland.enable = true;
+    hyprland.UWSM = true;
+    iphone-tools.enable = true;
+    libvirt.enable = true;
+    limine.enable = true;
+    limine.timeout = 600;
+    nas.enable = true;
+    sddm-lake.enable = true;
+  };
+  ##################
 
   ### BOOTLOADER ###
   boot = {
-    loader = {
-      systemd-boot.enable = false;
-      limine.enable = true;
-      efi.canTouchEfiVariables = true;
-      timeout = 600;
-    };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "zswap.enabled=1"

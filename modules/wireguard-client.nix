@@ -4,7 +4,7 @@
   networking.wg-quick.interfaces.wg0 = {
     generatePrivateKeyFile = true;
     privateKeyFile = "/etc/wireguard/keys/wg0.key";
-    autostart = false;
+    autostart = true;
 
     dns = [ 
       "1.1.1.1"
@@ -18,8 +18,8 @@
         publicKey = server_public_key;
         endpoint = server_endpoint;
         allowedIPs = [
-          "0.0.0.0/0"
-          "::/0"
+          "192.168.5.0/24"
+          "10.100.0.0/24"
         ];
         persistentKeepalive = 25;
       }

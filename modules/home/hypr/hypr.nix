@@ -1,7 +1,7 @@
 {...}:
 let 
 	imports = [
-		./hyprland/hyprland.nix
+		./hyprland.nix
 		./hypridle.nix
 		./hyprlock/hyprlock.nix
 	];

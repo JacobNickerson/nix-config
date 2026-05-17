@@ -15,7 +15,6 @@ let
 	"PortaJake" = [
 		{
 			timeout = 60;
-			on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off; ${pkgs.hyprlock}/bin/hyprlock";
 			on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
 		}
 		{

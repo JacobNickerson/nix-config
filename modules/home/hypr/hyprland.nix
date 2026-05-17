@@ -25,7 +25,7 @@ let
 	
 in
 {
-	home.file."${config.home.homeDirectory}/.config/scripts/start_tmux.sh".source = ../../start_tmux.sh; # silly exec-once script
+	home.file."${config.home.homeDirectory}/.config/scripts/start_tmux.sh".source = ../start_tmux.sh; # silly exec-once script
 	systemd.user.targets.hyprland-ready = {
 		Unit = {
 			Description = "Custom target activated after Hyprland compositor initialization";
@@ -128,7 +128,6 @@ in
 			};
 
 			dwindle = {
-				pseudotile = true;
 				preserve_split = true;
 			};
 
@@ -165,7 +164,7 @@ in
 				"$mainMod,V,togglefloating"
 				"$mainMod,R,exec,$menu"
 				"$mainMod,P,pseudo"
-				"$mainMod,J,togglesplit"
+				"$mainMod,J,layoutmsg"
 				"$mainMod,apostrophe,exec,pkill -SIGUSR1 waybar"
 				"$mainMod, L, exec, sleep 0.5 && hyprctl dispatch dpms off" 
 				"CTRL_SUPER, L, exec, sleep 0.5 && hyprctl dispatch dpms off && hyprlock"

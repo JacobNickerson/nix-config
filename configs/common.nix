@@ -142,7 +142,6 @@
   };
 
   programs.fish.enable = true;
-  programs.zsh.enable = true;
   programs.nix-ld.enable = true;
   environment.pathsToLink = [ "/share/zsh" ];  # NOTE: Required for zsh completion of system programs
                                                # TODO: Find a way to include this with the zsh module

@@ -1,0 +1,5 @@
+PLACEHOLDER FILE
+in order to dump the real virtual.bin
+`ls /sys/class/drm/*/edid`
+find the one corresponding to the monitor in question
+`cp /sys/class/drm/card-here/edid ~/nix-config/modules/virtual-display/virtual.bin`

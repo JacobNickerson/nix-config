@@ -2,23 +2,23 @@
   user_name = "jacobnickerson";
 	home_dir = "/home/${user_name}";
 	imports = [
-		../alacritty.nix
-		../btop.nix
-		../fastfetch.nix
-		../fcitx5.nix
-		../git.nix
-		../hypr/hypr.nix
-		../mpvpaper/mpvpaper.nix
-		../neovim.nix
-		../openssh/openssh.nix  # TODO: Proper options so that host selection can be done after import time
-		(import ../nix-helper.nix { flake_path = "${home_dir}/nix-config"; })
-		../nvibrant.nix
-		../tmux.nix
-		../vesktop/vesktop.nix
-		../vivaldi/vivaldi.nix
-		../waybar/waybar.nix
-		../wofi.nix
-		../zsh.nix
+		./modules/alacritty.nix
+		./modules/btop.nix
+		./modules/fastfetch.nix
+		./modules/fcitx5.nix
+		./modules/git.nix
+		./modules/hypr/hypr.nix
+		./modules/mpvpaper/mpvpaper.nix
+		./modules/neovim.nix
+		(import ./modules/nix-helper.nix { flake_path = "${home_dir}/nix-config"; })
+		./modules/openssh/openssh.nix  # TODO: Proper options so that host selection can be done after import time
+		./modules/nvibrant.nix
+		./modules/tmux.nix
+		./modules/vesktop/vesktop.nix
+		./modules/vivaldi/vivaldi.nix
+		./modules/waybar/waybar.nix
+		./modules/wofi.nix
+		./modules/zsh.nix
 	];
 in {
 	config.users.users.jacobnickerson = {

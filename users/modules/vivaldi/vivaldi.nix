@@ -1,17 +1,31 @@
-{ ... }:
+{ config, lib, ... }:
+let
+	cfg = config.myUserModules.vivaldi;
+in
 {
 	imports = [ ./twilight.nix ];
-	programs.vivaldi = {
-		enable = true;
+	options.myUserModules.vivaldi = {
+		enable = lib.mkEnableOption "Vivaldi preset";
+		twilight.enable = lib.mkOption {
+			type = lib.types.bool;
+			description = "Add twilight theme files to .config"; 
+			default = true;
+		};
+	};
 
-		extensions = [
-			{ id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }  # UBlockOrigin
-			{ id = "nngceckbapebfimnlniiiahkandclblb"; }  # Bitwarden
-			{ id = "jghecgabfgfdldnmbfkhmffcabddioke"; }  # Volume Master
-		];
+	config = lib.mkIf cfg.enable {
+		programs.vivaldi = {
+			enable = true;
 
-		commandLineArgs = [
-			"--disable-features=WakeLock"
-		];
+			extensions = [
+				{ id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }  # UBlockOrigin
+				{ id = "nngceckbapebfimnlniiiahkandclblb"; }  # Bitwarden
+				{ id = "jghecgabfgfdldnmbfkhmffcabddioke"; }  # Volume Master
+			];
+
+			commandLineArgs = [
+				"--disable-features=WakeLock"
+			];
+		};
 	};
 }

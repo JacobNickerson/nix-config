@@ -1,24 +1,9 @@
+{ hostname }:
 { inputs, config, pkgs, ... }: let
   user_name = "jacobnickerson";
 	home_dir = "/home/${user_name}";
 	imports = [
-		./modules/alacritty.nix
-		./modules/btop.nix
-		./modules/fastfetch.nix
-		./modules/fcitx5.nix
-		./modules/git.nix
-		./modules/hypr/hypr.nix
-		./modules/mpvpaper/mpvpaper.nix
-		./modules/neovim.nix
-		(import ./modules/nix-helper.nix { flake_path = "${home_dir}/nix-config"; })
-		./modules/openssh/openssh.nix  # TODO: Proper options so that host selection can be done after import time
-		./modules/nvibrant.nix
-		./modules/tmux.nix
-		./modules/vesktop/vesktop.nix
-		./modules/vivaldi/vivaldi.nix
-		./modules/waybar/waybar.nix
-		./modules/wofi.nix
-		./modules/zsh.nix
+		./modules/myUserModules.nix
 	];
 in {
 	config.users.users.jacobnickerson = {
@@ -31,6 +16,7 @@ in {
 	};
 	config.home-manager.users.jacobnickerson = {
 		inherit imports;
+
 		fonts.fontconfig.enable = true;
 
 		home = {
@@ -80,14 +66,31 @@ in {
 			};
 		};
 
-		services = {
-			swaync.enable = true;
+		myUserModules = {
+			alacritty.enable = true;
+			btop.enable = true;
+			fastfetch.enable = true;
+			fcitx5.enable = true;
+			git.enable = true;
+			hypr.enable = true;
+			mpvpaper.enable = true;
+			neovim.enable = true;
+			nix-helper.enable = true;
+			nix-helper.flake_path = "${home_dir}/nix-config"; 
+			openssh.enable = true;
+			openssh.hostname = hostname;
+			nvibrant.enable = true;
+			tmux.enable = true;
+			vesktop.enable = true;
+			vivaldi.enable = true;
+			vivaldi.twilight.enable = true;
+			waybar.enable = true;
+			wofi.enable = true;
+			zsh.enable = true;
 		};
 
 		programs = {
 			home-manager.enable = true;
-			hyprshot.enable = true;
-			mpvpaper.enable = true;
 			vscode.enable = true;
 			obs-studio.enable = true;
 		};

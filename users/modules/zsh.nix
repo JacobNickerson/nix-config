@@ -1,68 +1,77 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  cfg = config.myUserModules.zsh;
+in
 {
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    defaultKeymap = "viins";
-    autosuggestion = {
+  options.myUserModules.zsh = {
+    enable = lib.mkEnableOption "Zsh preset";
+  };
+
+  config = lib.mkIf cfg.enable {
+    programs.zsh = {
       enable = true;
+      enableCompletion = true;
+      defaultKeymap = "viins";
+      autosuggestion = {
+        enable = true;
 
-      highlight = "fg=#666666";
-      strategy = [ "history" "completion" ];
-    };
-
-    syntaxHighlighting = {
-      enable = true;
-
-      highlighters = [
-        "main"
-        "brackets"
-        "pattern"
-        "cursor"
-      ];
-
-      styles = {
-        alias = "fg=green,bold";
-        builtin = "fg=green,bold";
-        command = "fg=green,bold";
-        unknown-token = "fg=red,bold";
-        reserved-word = "fg=yellow";
+        highlight = "fg=#666666";
+        strategy = [ "history" "completion" ];
       };
-    };
 
-    initContent = ''
-      autoload -Uz colors && colors
-      export MANROFFOPT="-c"
-      PROMPT='%F{#e18384}%n%F{cyan}@%F{#e18384}%m%F{cyan}>%~ $ %f'
-      path=(
-        "$HOME/.local/bin"
-        $path
-      )
+      syntaxHighlighting = {
+        enable = true;
 
-      history() {
-        builtin history -i -f
-        fc -l -t '%F %T' "$@"
-      }
+        highlighters = [
+          "main"
+          "brackets"
+          "pattern"
+          "cursor"
+        ];
 
-      TRAPINT() {
-				zle && zle kill-whole-line
-      }
+        styles = {
+          alias = "fg=green,bold";
+          builtin = "fg=green,bold";
+          command = "fg=green,bold";
+          unknown-token = "fg=red,bold";
+          reserved-word = "fg=yellow";
+        };
+      };
 
-      fastfetch
-    '';
+      initContent = ''
+        autoload -Uz colors && colors
+        export MANROFFOPT="-c"
+        PROMPT='%F{#e18384}%n%F{cyan}@%F{#e18384}%m%F{cyan}>%~ $ %f'
+        path=(
+          "$HOME/.local/bin"
+          $path
+        )
 
-    history = {
-      size = 100000;
-      save = 100000;
-      path = "$HOME/.zsh_history";
-      ignoreDups = true;
-      share = true;
-    };
+        history() {
+          builtin history -i -f
+          fc -l -t '%F %T' "$@"
+        }
 
-    historySubstringSearch = {
-      enable = true;
-      searchUpKey = "^[[A";
-      searchDownKey = "^[[B";
+        TRAPINT() {
+          zle && zle kill-whole-line
+        }
+
+        fastfetch
+      '';
+
+      history = {
+        size = 100000;
+        save = 100000;
+        path = "$HOME/.zsh_history";
+        ignoreDups = true;
+        share = true;
+      };
+
+      historySubstringSearch = {
+        enable = true;
+        searchUpKey = "^[[A";
+        searchDownKey = "^[[B";
+      };
     };
   };
 }

@@ -1,12 +1,16 @@
-{ config, pkgs, ... }:
-
+{ config, lib, pkgs, ... }:
+let
+	cfg = config.myUserModules.vivaldi.twilight;
+in
 {
-	home.file = {
-		".config/vivaldi/user-themes/twilight.zip" = {
-			source = ./twilight.zip;
+	config = lib.mkIf cfg.enable {
+		home.file = {
+			".config/vivaldi/user-themes/twilight.zip" = {
+				source = ./twilight.zip;
+			};
+			".config/vivaldi/user-themes/twilight-alt.zip" = {
+				source = ./twilight-alt.zip;
+			};
 		};
-		".config/vivaldi/user-themes/twilight-alt.zip" = {
-			source = ./twilight-alt.zip;
-		};
-	};
+	}; 
 }

@@ -1,6 +1,7 @@
-{ pkgs, lib, hostname, ... }:
+{ config, lib, pkgs, hostname, ... }:
 let
- listeners = {
+	cfg = config.myUserModules.hypr;
+	listeners = {
 	"NixJake" = [
 		{
 			timeout = 60;
@@ -37,14 +38,35 @@ let
 				on-resume = "systemctl --user restart mpvpaper.service";
 			}
 		];
-in {
-	services.hypridle = {
-		enable = true;
-		settings = {
-			general = {
-				lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+in
+{
+	 options.myUserModules.hypr = {
+		hypridle.enable = lib.mkOption {
+			type = lib.types.bool;
+			default = cfg.enable;
+			description = "Hypridle preset";
+		};
+	 };
+
+	config = lib.mkIf cfg.hypridle.enable {
+		assertions = [
+			{
+				assertion = cfg.enable;
+				message = "Hypridle requires the hypr ecosystem being enabled";
+			}
+			{
+				assertion = cfg.hyprlock.enable;
+				message = "Hypridle requires hyprlock being enabled";
+			}
+		];
+		services.hypridle = {
+			enable = true;
+			settings = {
+				general = {
+					lock_cmd = "${pkgs.hyprlock}/bin/hyprlock";
+				};
+				listener = listener;
 			};
-			listener = listener;
 		};
 	};
 }

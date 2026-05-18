@@ -43,12 +43,12 @@
       NixJake = mkHost {
         hostname = "NixJake";
         hostConfig = ./configs/nixjake.nix;
-        users = [ ./users/jacobnickerson.nix ];
+        users = [ (import ./users/jacobnickerson.nix { hostname = "NixJake"; }) ];
       };
       PortaJake = mkHost {
         hostname = "PortaJake";
         hostConfig = ./configs/portajake.nix;
-        users = [ ./users/jacobnickerson.nix ];
+        users = [ (import ./users/jacobnickerson.nix { hostname = "PortaJake"; }) ];
       };
     };
   };

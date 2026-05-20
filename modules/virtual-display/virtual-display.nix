@@ -1,17 +1,17 @@
 { config, lib, pkgs, ... }:
 let
-	cfg = config.myModules.virtual_display;
+	cfg = config.myModules.virtual-display;
 	edid_dir = "$out/lib/firmware/edid";
 	edid_file = "virtual.bin";
 in
 {
-	options.myModules.virtual_display = {
+	options.myModules.virtual-display = {
 		enable = lib.mkEnableOption "Create an EDID backed virtual display";
 	};
 
 	config = lib.mkIf cfg.enable {
 		hardware.display.edid.enable = true;
-		hardware.display.outputs.DP-3 = {
+		hardware.display.outputs.DP-1 = {
 			edid = edid_file;	
 			mode = "e";
 		};

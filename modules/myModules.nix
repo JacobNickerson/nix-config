@@ -6,6 +6,7 @@
 		./fcitx5.nix
 		./gaming.nix
 		./hyprland.nix
+		./intel-gpu.nix
 		./iphone.nix
 		./libvirt.nix
 		./limine.nix

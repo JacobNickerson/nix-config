@@ -7,6 +7,7 @@
   ];
   ### MY MODULES ###
   myModules = {
+    intel-gpu.enable = true;
     wg-client = {
       enable = true;
       address = "10.100.0.2/32";
@@ -57,20 +58,6 @@
     ];
   };
   #############################
-
-  ### HARDWARE ACCELERATION ###
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      vpl-gpu-rt
-    ];
-  };
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD";
-  };
-  ############################
 
   ### FILESYSTEM OPTIONS ###
   fileSystems."/".options = [ "compress=zstd:3" "noatime" ];

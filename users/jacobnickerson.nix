@@ -84,6 +84,7 @@ in {
 			vivaldi.enable = true;
 			vivaldi.twilight.enable = true;
 			waybar.enable = true;
+			waybar.hostname = hostname;
 			wofi.enable = true;
 			zsh.enable = true;
 		};

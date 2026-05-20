@@ -1,10 +1,14 @@
 { config, lib, pkgs, ... }:
 let
 	cfg = config.myUserModules.waybar;
-	waybarConfig = import ./config.nix;
+	waybarConfig = (import ./config.nix { hostname = cfg.hostname; });
 in {
 	options.myUserModules.waybar = {
 		enable = lib.mkEnableOption "Waybar preset";
+		hostname = lib.mkOption {
+			type = lib.types.str;
+			description = "Hostname used to determine host specific values";
+		};
 	};
 
 	config = lib.mkIf cfg.enable {

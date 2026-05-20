@@ -1,3 +1,13 @@
+{ hostname }:
+let
+	workspaces =
+	if hostname == "NixJake" then
+	{ "*" = []; }  # TODO: Figure out how to guarantee which display adapter is set to virtual, then use that one
+	else if hostname == "PortaJake" then
+	{ "eDP-1" = []; }
+	else
+	{ "*" = [1 2 3 4 5]; };
+in
 {
 	mainBar = {
 		layer = "top";
@@ -169,10 +179,7 @@
 			sort-by-number = true;
 			on-click = "activate";
 			disable-scroll = false;
-			persistent-workspaces = {
-				"VIRTUAL" = [ 1 2 3 4 5 ];
-				"eDP-1" = [ 1 2 3 4 5 ];
-			};
+			persistent-workspaces = workspaces;
 		};
 
 		"hyprland/window" = {

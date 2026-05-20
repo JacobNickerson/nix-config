@@ -8,27 +8,12 @@
 
   ### MY MODULES ### 
   myModules = {
+    amdgpu.enable = true;
     openssh.enable = true;
     openssh.hostname = "NixJake";
     sunshine.enable = true;
     sunshine.use_cuda = false;
   };
-  ##################
-
-  ### GPU DRIVERS ###
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
-  };
-  services.xserver.videoDrivers = [ "amdgpu" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelParams = [
-
-  ];  
-  services.lact.enable = true;
   ##################
 
   ### WINDOWS DUALBOOT ###

@@ -79,7 +79,6 @@ in {
 			nix-helper.flake_path = "${home_dir}/nix-config"; 
 			openssh.enable = true;
 			openssh.hostname = hostname;
-			nvibrant.enable = true;
 			tmux.enable = true;
 			vesktop.enable = true;
 			vivaldi.enable = true;

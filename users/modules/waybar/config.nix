@@ -2,11 +2,11 @@
 let
 	workspaces =
 	if hostname == "NixJake" then
-	{ "*" = []; }  # TODO: Figure out how to guarantee which display adapter is set to virtual, then use that one
+	{ "DP-1" = [ 1 2 3 4 5 ]; }  # TODO: Figure out how to guarantee which display adapter is set, then use that one
 	else if hostname == "PortaJake" then
-	{ "eDP-1" = []; }
+	{ "eDP-1" = [ 1 2 3 4 5 ]; }
 	else
-	{ "*" = [1 2 3 4 5]; };
+	{ "*" = [ 1 2 3 4 5 ]; };
 in
 {
 	mainBar = {

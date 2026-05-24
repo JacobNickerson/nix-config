@@ -1,17 +1,14 @@
 { config, lib, hostname, ... }:
 let
 	cfg = config.myUserModules.hypr;
+	VirtualDisplay = "desc:Samsung Electric Company Virtual G81SF HNBYA00610";
 	NixJakeMonitor = "desc:Samsung Electric Company Odyssey G81SF HNBYA00610";
 	extra_config = {
 		"NixJake" = {
-			monitor = [ "VIRTUAL,3840x2160@239.99600,auto,1.2,bitdepth,10" "${NixJakeMonitor},3840x2160@239.99600,auto,1.2,bitdepth,10,mirror,VIRTUAL" ",3840x2160@240,auto,1.2,mirror,${NixJakeMonitor}" ];
-			exec-once = [
-				"hyprctl output create headless VIRTUAL"
-			];
+			monitor = [ "${NixJakeMonitor},3840x2160@239.99600,auto,1.2,bitdepth,10" "${VirtualDisplay},disable" ];
 		};
 		"PortaJake" = {
 			monitor = [ "eDP-1,preferred,auto,1" ",3840x2160@120,auto,1.5"];
-			exec-once = [ ];
 		};
 	};
 	
@@ -21,7 +18,6 @@ let
 		then host_match
 		else {
 			monitor = [ ",preferred,auto,1" ];
-			exec-once = [ ];
 		};
 in
 {
@@ -65,10 +61,10 @@ in
 					"vivaldi"
 					"steam"
 					"vesktop"
-					"hyprctl dispatch workspace 3 && $terminal"
+					"$terminal"
 					"~/.config/scripts/start_tmux.sh 0"
 					"systemctl --user start hyprland-ready.target"  
-				] ++ extra_configs.exec-once;
+				];
 
 				env = [
 					"XCURSOR_SIZE,24"

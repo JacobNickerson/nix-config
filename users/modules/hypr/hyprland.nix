@@ -89,7 +89,7 @@ in
 					"col.inactive_border" = "rgba(595959aa)";
 
 					resize_on_border = false;
-					allow_tearing = false;
+					allow_tearing = true;
 					layout = "dwindle";
 				};
 
@@ -151,6 +151,10 @@ in
 					preserve_split = true;
 				};
 
+				render = {
+					direct_scanout = true;
+				};
+
 				master.new_status = "master";
 
 				misc = {
@@ -158,6 +162,7 @@ in
 					disable_hyprland_logo = true;
 					mouse_move_enables_dpms = true;
 					key_press_enables_dpms = true;
+					vrr = true;
 				};
 
 				input = {

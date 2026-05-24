@@ -165,7 +165,7 @@ in
 					follow_mouse = 1;
 					accel_profile = "flat";
 					sensitivity = 0;
-
+					touchpad.disable_while_typing = false;
 					touchpad.natural_scroll = true;
 				};
 

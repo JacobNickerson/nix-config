@@ -12,6 +12,7 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + apostrophe", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch dpms off"))
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch dpms off && hyprlock"))

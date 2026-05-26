@@ -5,8 +5,8 @@ let
 	"NixJake" = [
 		{
 			timeout = 60;
-			on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-			on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+			on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch \"hl.dsp.dpms({ action = 'off' })\"";
+			on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch \"hl.dsp.dpms({ action = 'on' })\"";
 		}
 		{
 			timeout = 600;
@@ -16,7 +16,7 @@ let
 	"PortaJake" = [
 		{
 			timeout = 60;
-			on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+			on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch \"hl.dsp.dpms({ action = 'on' })\"";
 		}
 		{
 			timeout = 300;

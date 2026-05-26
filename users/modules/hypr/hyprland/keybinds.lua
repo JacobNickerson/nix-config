@@ -14,8 +14,8 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + apostrophe", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch dpms off"))
-hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch dpms off && hyprlock"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch \"hl.dsp.dpms({ action = 'off' })\""))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch \"hl.dsp.dpms({ action = 'off' })\" && hyprlock"))
 
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -z -m region"))

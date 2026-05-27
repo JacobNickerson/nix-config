@@ -34,7 +34,7 @@ in
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = extra_entries // {
+      settings = extra_entries // {
         "github.com" = {
           hostname = "github.com";
           user = "git";

@@ -136,7 +136,7 @@ in
 			};
 			on-click = "~/.config/waybar/scripts/inhibit-sleep.sh toggle";
 			on-click-middle = "~/.config/waybar/scripts/inhibit-sleep.sh menu";
-			on-click-right = "hyprctl dispatch dpms off";
+			on-click-right = "hyprctl dispatch \"hl.dsp.dpms({ action = 'off' })\"";
 			return-type = "json";
 			signal =  8;
 		};

@@ -61,7 +61,24 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nvibrant": "nvibrant"
+        "nvibrant": "nvibrant",
+        "sunshine-pr": "sunshine-pr"
+      }
+    },
+    "sunshine-pr": {
+      "locked": {
+        "lastModified": 1779795653,
+        "narHash": "sha256-DXM7o6DNcVY0s6TgrtbfpcIpKvcRECgG4SXZhzJaEuE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b0c4630d607147a700c69c16a53bb0223e3b4d59",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/521906/head",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "treefmt": {

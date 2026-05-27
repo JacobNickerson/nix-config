@@ -11,16 +11,23 @@
       url = "github:mikaeladev/nix-nvibrant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sunshine-pr = {
+      url = "github:NixOS/nixpkgs/pull/521906/head";
+    };
   };
 
-  outputs = { nixpkgs, nvibrant, home-manager, ... }@inputs:
+  outputs = { nixpkgs, nvibrant, home-manager, sunshine-pr, ... }@inputs:
   let
     system = "x86_64-linux";
+
+    sunshine_overlay = final: prev: {
+      sunshine = sunshine-pr.legacyPackages.${system}.sunshine;
+    };
 
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [ nvibrant.overlays.default ];
+      overlays = [ nvibrant.overlays.default sunshine_overlay ];
     };
 
     mkHost = { hostname, hostConfig, users ? [] }:

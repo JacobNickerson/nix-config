@@ -17,6 +17,19 @@ hl.bind(mainMod .. " + apostrophe", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch \"hl.dsp.dpms({ action = 'off' })\""))
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch \"hl.dsp.dpms({ action = 'off' })\" && hyprlock"))
 
+local is_virt_disabled = true
+hl.bind(mainMod .. " + SHIFT + slash", function ()
+    hl.monitor({
+        output = "VIRTUAL",
+        disabled = is_virt_disabled,
+    })
+    hl.monitor({
+        output   = "desc:Samsung Electric Company Odyssey G81SF HNBYA00610",
+        disabled = not is_virt_disabled,
+    })
+    is_virt_disabled = not is_virt_disabled
+end)
+
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -z -m region"))
 
@@ -30,6 +43,7 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
+
 
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))

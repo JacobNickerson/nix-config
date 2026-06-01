@@ -18,6 +18,8 @@ hl.monitor({
 })
 
 hl.monitor({
-    output   = "desc:Samsung Electric Company Virtual G81SF HNBYA00610",
-    disabled  = true,
+    output   = "VIRTUAL",
+    mode     = "1920x1080@60",
+    position = "auto",
+    scale    = "1",
 })

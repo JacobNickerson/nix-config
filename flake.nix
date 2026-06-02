@@ -28,6 +28,9 @@
       inherit system;
       config.allowUnfree = true;
       overlays = [ nvibrant.overlays.default sunshine_overlay ];
+      config.permittedInsecurePackages = [
+        "electron-39.8.10"
+      ];
     };
 
     mkHost = { hostname, hostConfig, users ? [] }:

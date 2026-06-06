@@ -26,10 +26,6 @@ in
 				vim.opt.softtabstop = 2
 				vim.opt.expandtab = true
 			'';
-			
-			# TODO: Remove if updating to 26.11
-			withRuby = false;
-			withPython3 = false;
 		};
 	};
 }

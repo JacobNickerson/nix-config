@@ -7,16 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvibrant = {
-      url = "github:mikaeladev/nix-nvibrant";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     sunshine-pr = {
       url = "github:NixOS/nixpkgs/pull/521906/head";
     };
   };
 
-  outputs = { nixpkgs, nvibrant, home-manager, sunshine-pr, ... }@inputs:
+  outputs = { nixpkgs, home-manager, sunshine-pr, ... }@inputs:
   let
     system = "x86_64-linux";
 
@@ -27,7 +23,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [ nvibrant.overlays.default sunshine_overlay ];
+      overlays = [ sunshine_overlay ];
       config.permittedInsecurePackages = [
         "electron-39.8.10"
       ];

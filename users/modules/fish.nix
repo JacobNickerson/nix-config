@@ -1,10 +1,10 @@
 { config, lib, ... }:
 let
-	cfg = options.myUserModules.fish;
+	cfg = config.myUserModules.fish;
 in
 {
 	options.myUserModules.fish = {
-		enable = mkEnableOption "Fish preset";
+		enable = lib.mkEnableOption "Fish preset";
 	};
 
 	config = lib.mkIf cfg.enable {

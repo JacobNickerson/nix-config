@@ -3,8 +3,10 @@
 	imports = [
 		./alacritty.nix
 		./btop.nix
+		./cli-tools.nix
 		./fastfetch.nix
 		./fcitx5.nix
+		./fish.nix
 		./git.nix
 		./hypr/hypr.nix
 		./mpvpaper/mpvpaper.nix

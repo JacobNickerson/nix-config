@@ -10,9 +10,8 @@ in {
 		isNormalUser = true;
 		description = "Jacob Nickerson";
 		extraGroups = [ "networkmanager" "wheel" "gamemode" "libvirtd" ];
-		shell = pkgs.zsh;
-		ignoreShellProgramCheck = true; # NOTE: Silences a warning about shell not being enabled
-		packages = with pkgs; [];       #       Make sure the selected shell is imported as a module!
+		shell = pkgs.fish;
+		packages = with pkgs; [];
 	};
 	config.home-manager.users.jacobnickerson = {
 		inherit imports;
@@ -27,8 +26,6 @@ in {
 			packages = with pkgs; [
 				bitwarden-cli
 				bitwarden-desktop
-				eza
-				fastfetch
 				heroic
 				playerctl
 				neo
@@ -46,11 +43,11 @@ in {
 			};
 
 			shellAliases = {
-				ls   = "eza -al --color=always --group-directories-first --icons";
-				la   = "eza -a --color=always --group-directories-first --icons";
-				ll   = "eza -l --color=always --group-directories-first --icons";
-				lt   = "eza -aT --color=always --group-directories-first --icons";
-				lg   = "eza -alg --color=always --group-directories-first --icons";
+				ls   = "eza -al";
+				la   = "eza -a ";
+				ll   = "eza -l ";
+				lt   = "eza -aT";
+				lg   = "eza -alg";
 				ldot = "eza -a | grep -e '^\\.'";
 				dev         = "nix develop --command zsh";
 				tmp         = "nix-shell --command zsh -p";
@@ -69,7 +66,9 @@ in {
 		myUserModules = {
 			alacritty.enable = true;
 			btop.enable = true;
+			cli-tools.enable = true;
 			fastfetch.enable = true;
+			fish.enable = true;
 			fcitx5.enable = true;
 			git.enable = true;
 			hypr.enable = true;

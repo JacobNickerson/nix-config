@@ -13,6 +13,7 @@
 		./neovim.nix
 		./nix-helper.nix
 		./openssh/openssh.nix
+		./rbw.nix
 		./tmux.nix
 		./vesktop/vesktop.nix
 		./vivaldi/vivaldi.nix

@@ -24,8 +24,6 @@ in {
 			stateVersion = "26.05"; 
 
 			packages = with pkgs; [
-				bitwarden-cli
-				bitwarden-desktop
 				heroic
 				playerctl
 				neo
@@ -78,6 +76,7 @@ in {
 			nix-helper.flake_path = "${home_dir}/nix-config"; 
 			openssh.enable = true;
 			openssh.hostname = hostname;
+			rbw.enable = true;
 			tmux.enable = true;
 			vesktop.enable = true;
 			vivaldi.enable = true;

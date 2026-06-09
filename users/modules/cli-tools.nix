@@ -10,7 +10,7 @@ in
 	config = lib.mkIf cfg.enable {
 		programs.ripgrep = {
 			enable = true;
-			arguments = [ ];
+			arguments = [ "--smart-case" ];
 		};
 		programs.ripgrep-all = {
 			enable = true;

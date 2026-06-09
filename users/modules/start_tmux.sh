@@ -22,8 +22,6 @@ done
 
 tmux kill-pane -a -t $SESSION:0
 tmux select-layout -t $SESSION:0 tiled 
-tmux split-window -h -t $SESSION:0.0 "btop"
-tmux split-window -v -t $SESSION:0.1 "neo -D --color=orange"
+tmux split-window -h -t $SESSION:0.0 "aerc"
 tmux select-pane -t $SESSION:0 -L
 tmux send-key -t $SESSION:0 "clear; fastfetch" C-m
-echo "WE DID IT YOOO"

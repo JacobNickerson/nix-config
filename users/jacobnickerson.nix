@@ -62,6 +62,7 @@ in {
 		};
 
 		myUserModules = {
+			aerc.enable = true;
 			alacritty.enable = true;
 			btop.enable = true;
 			cli-tools.enable = true;

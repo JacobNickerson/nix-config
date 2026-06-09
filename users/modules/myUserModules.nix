@@ -1,6 +1,7 @@
 { ... }:
 {
 	imports = [
+		./aerc.nix
 		./alacritty.nix
 		./btop.nix
 		./cli-tools.nix

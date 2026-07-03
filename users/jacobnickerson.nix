@@ -47,8 +47,8 @@ in {
 				lt   = "eza -aT";
 				lg   = "eza -alg";
 				ldot = "eza -a | grep -e '^\\.'";
-				dev         = "nix develop --command zsh";
-				tmp         = "nix-shell --command zsh -p";
+				dev         = "nix develop --command fish";
+				tmp         = "nix-shell --command fish -p";
 				tarnow      = "tar -acf ";
 				untar       = "tar -zxvf ";
 				wget        = "wget -c ";

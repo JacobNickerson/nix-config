@@ -7,25 +7,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sunshine-pr = {
-      url = "github:NixOS/nixpkgs/pull/521906/head";
-    };
   };
 
-  outputs = { nixpkgs, home-manager, sunshine-pr, ... }@inputs:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
   let
     system = "x86_64-linux";
-
-    sunshine_overlay = final: prev: {
-      sunshine = sunshine-pr.legacyPackages.${system}.sunshine;
-    };
 
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [ sunshine_overlay ];
+      overlays = [ ];
       config.permittedInsecurePackages = [
-        "electron-39.8.10"
+        "pnpm-10.29.2"
       ];
     };
 
@@ -37,6 +30,7 @@
           ({ ... }: { networking.hostName = hostname; })
           hostConfig
           home-manager.nixosModules.home-manager
+
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -51,6 +45,7 @@
         hostConfig = ./configs/nixjake.nix;
         users = [ (import ./users/jacobnickerson.nix { hostname = "NixJake"; }) ];
       };
+
       PortaJake = mkHost {
         hostname = "PortaJake";
         hostConfig = ./configs/portajake.nix;

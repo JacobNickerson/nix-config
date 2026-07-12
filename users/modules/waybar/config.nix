@@ -149,7 +149,7 @@ in
 			format-connected = "󰂱";
 			min-length = 2;
 			max-length = 2;
-			on-click = "alacritty -e ~/.config/waybar/scripts/bluetooth.sh";
+			on-click = "alacritty -e bluetoothctl";
 			on-click-right = "bluetoothctl power off && notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' -h string:x-canonical-private-synchronous:bluetooth";
 			tooltip-format = "Device Addr: {device_address}";
 			tooltip-format-disabled = "Bluetooth Disabled";

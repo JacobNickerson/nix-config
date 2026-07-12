@@ -39,7 +39,6 @@ in {
 		};
 
 		home.file.".config/waybar/scripts/power-menu.sh".source = ./scripts/power-menu.sh;
-		home.file.".config/waybar/scripts/bluetooth.sh".source = ./scripts/bluetooth.sh;
 		home.file.".config/waybar/scripts/inhibit-sleep.sh".source = ./scripts/inhibit-sleep.sh;
 	};
 }

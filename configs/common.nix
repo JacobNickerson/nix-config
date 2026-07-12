@@ -89,12 +89,6 @@
   ### WAYLAND SESSION AND PORTALS ###
   services.dbus.enable = true;
   security.polkit.enable = true;
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-    ];
-  };
   ###################################
 
   ### FONTS ###

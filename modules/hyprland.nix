@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   cfg = config.myModules.hyprland;
 in
@@ -16,5 +16,13 @@ in
     programs.hyprland.enable = true;
     programs.hyprland.withUWSM = cfg.UWSM;
     programs.uwsm.enable = cfg.UWSM;
+    xdg.portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-hyprland
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-wlr
+      ];
+    };
   };
 }

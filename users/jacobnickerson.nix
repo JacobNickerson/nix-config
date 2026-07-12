@@ -93,5 +93,36 @@ in {
 			vscode.enable = true;
 			obs-studio.enable = true;
 		};
+
+		qt = {
+			enable = true;
+			platformTheme.name = "gtk3";
+		};
+
+		gtk = {
+			enable = true;
+			iconTheme = {
+				package = pkgs.catppuccin-papirus-folders.override {
+					flavor = "macchiato";
+					accent = "maroon";
+				};
+				name = "Papirus-Dark";
+			};
+			colorScheme = "dark";
+			gtk2.extraConfig = ''
+				gtk-cursor-theme-size = 12
+				gtk-cursor-theme-name = "capitaine-cursors"
+			'';
+			gtk3.extraConfig = {
+				gtk-application-prefer-dark-theme = 1;
+				gtk-cursor-theme-size = 12;
+				gtk-cursor-theme-name = "capitaine-cursors";
+			};
+			gtk4.extraConfig = {
+				Settings = ''
+					gtk-application-prefer-dark-theme=1
+				'';
+			};
+		};
 	};
 }

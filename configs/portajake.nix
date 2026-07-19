@@ -3,7 +3,6 @@
   imports = [
     ./common.nix
     ../hardware/portajake.nix
-    ../modules/myModules.nix
   ];
   ### MY MODULES ###
   myModules = {

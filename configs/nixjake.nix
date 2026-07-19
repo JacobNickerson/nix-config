@@ -3,7 +3,6 @@
   imports = [
     ./common.nix
     ../hardware/nixjake.nix
-    ../modules/myModules.nix
   ];
 
   ### MY MODULES ### 

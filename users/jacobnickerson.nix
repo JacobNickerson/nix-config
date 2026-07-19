@@ -2,9 +2,6 @@
 { inputs, config, pkgs, ... }: let
   user_name = "jacobnickerson";
 	home_dir = "/home/${user_name}";
-	imports = [
-		./modules/myUserModules.nix
-	];
 in {
 	config.users.users.jacobnickerson = {
 		isNormalUser = true;
@@ -14,8 +11,6 @@ in {
 		packages = with pkgs; [];
 	};
 	config.home-manager.users.jacobnickerson = {
-		inherit imports;
-
 		fonts.fontconfig.enable = true;
 
 		home = {

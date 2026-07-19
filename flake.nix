@@ -22,6 +22,9 @@
       ];
     };
 
+    systemModule = import ./modules;
+    userModule = import ./users/modules;
+
     mkHost = { hostname, hostConfig, users ? [] }:
       nixpkgs.lib.nixosSystem {
         inherit system pkgs;
@@ -29,23 +32,31 @@
         modules = [
           ({ ... }: { networking.hostName = hostname; })
           hostConfig
+          systemModule
           home-manager.nixosModules.home-manager
-
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; hostname = hostname; };
+            home-manager.sharedModules = [ userModule ];
           }
         ] ++ users;
       };  
   in {
+    nixosModules = {
+      default = systemModule;
+    };
+
+    homeModules = {
+      default = userModule;
+    };
+
     nixosConfigurations = {
       NixJake = mkHost {
         hostname = "NixJake";
         hostConfig = ./configs/nixjake.nix;
         users = [ (import ./users/jacobnickerson.nix { hostname = "NixJake"; }) ];
       };
-
       PortaJake = mkHost {
         hostname = "PortaJake";
         hostConfig = ./configs/portajake.nix;

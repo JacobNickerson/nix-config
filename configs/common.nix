@@ -12,6 +12,7 @@
     limine.enable = true;
     limine.timeout = 600;
     nas.enable = true;
+    nas.server_address = "192.168.5.88";
     sddm-lake.enable = true;
   };
   ##################

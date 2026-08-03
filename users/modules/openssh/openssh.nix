@@ -42,14 +42,14 @@ in
           IdentitiesOnly = true;
         };
         "gubbserver" = {
-          HostName = "192.168.5.33";
+          HostName = "192.168.5.88";
           Port = 42067;
           User = "jacobnickerson";
           IdentityFile = [ "~/.ssh/gubbserver" ];
           IdentitiesOnly = true;
         };
         "gubbserver-code" = {
-          HostName = "192.168.5.33";
+          HostName = "192.168.5.88";
           Port = 42067;
           User = "jacobnickerson";
           IdentityFile = [ "~/.ssh/gubbserver" ];

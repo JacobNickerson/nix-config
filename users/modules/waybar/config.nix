@@ -2,8 +2,10 @@
 let
 	workspaces =
 	if hostname == "NixJake" then
-	{ "DP-1" = [ 1 2 3 4 5 ]; }  # TODO: Figure out how to guarantee which display adapter is set, then use that one
-	else if hostname == "PortaJake" then
+	{  # NOTE: Breaks if monitors connects to a different connector randomly
+		"DP-1" = [ 1 2 3 4 5 ];
+		"HDMI-A-2" = [ 6 7 8 9 10 ];
+	} else if hostname == "PortaJake" then
 	{ "eDP-1" = [ 1 2 3 4 5 ]; }
 	else
 	{ "*" = [ 1 2 3 4 5 ]; };

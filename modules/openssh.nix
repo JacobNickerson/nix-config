@@ -44,6 +44,7 @@ in
 		if cfg.hostname == "NixJake" then {
 			"jacobnickerson".openssh.authorizedKeys.keys = [
 				"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID7bfBikg97mO7cfMFZmAQw6CpJ5Y1p14dTMhMadBTal jacobnickerson@PortaJake"
+				"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPQpGBWy22IP0QT+MP1+rXBlIpIilkmzLepc+UMB59PZ jacobnickerson@UltraPortaJake"
 			];
 		} else if cfg.hostname == "PortaJake" then {
 			"jacobnickerson".openssh.authorizedKeys.keys = [

@@ -9,8 +9,11 @@
     hyprland.UWSM = true;
     iphone-tools.enable = true;
     libvirt.enable = true;
-    limine.enable = true;
-    limine.timeout = 600;
+    limine = {
+      enable = true;
+      timeout = 600;
+      useSecureboot = true;
+    };
     nas.enable = true;
     nas.server_address = "192.168.5.88";
     sddm-lake.enable = true;

@@ -11,13 +11,19 @@ in
       default = 5;
       description = "Auto-selection timer in seconds";
     };
+
+    useSecureboot = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable secure boot support";
+    };
   };
 
   config = lib.mkIf cfg.enable {
     boot.loader = lib.mkForce {
       systemd-boot.enable = false;
       limine.enable = true;
-      limine.secureBoot.enable = true;
+      limine.secureBoot.enable = cfg.useSecureboot;
       efi.canTouchEfiVariables = true;
       timeout = cfg.timeout;
     };

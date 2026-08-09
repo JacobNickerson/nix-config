@@ -32,7 +32,6 @@ in {
 			sessionVariables = {
 				EDITOR = "nvim";
 				VISUAL = "nvim";
-				XDG_CURRENT_SESSION = "Hyprland"; # NOTE: Setting these manually might be cringe, but who cares
 			};
 
 			shellAliases = {

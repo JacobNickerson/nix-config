@@ -19,14 +19,16 @@ in {
 			stateVersion = "26.05"; 
 
 			packages = with pkgs; [
+        eza
+        firefox
 				heroic
-				playerctl
-				neo
-				piper
-				zoom-us
-				moonlight-qt
 				lsfg-vk
 				lsfg-vk-ui
+				moonlight-qt
+				neo
+				piper
+				playerctl
+        yazi
 			];
 
 			sessionVariables = {
@@ -43,15 +45,8 @@ in {
 				ldot = "eza -a | grep -e '^\\.'";
 				dev         = "nix develop --command $SHELL";
 				tmp         = "nix-shell --command $SHELL -p";
-				tarnow      = "tar -acf ";
-				untar       = "tar -zxvf ";
-				wget        = "wget -c ";
 				psmem       = "ps auxf | sort -nr -k 4";
 				psmem10     = "ps auxf | sort -nr -k 4 | head -10";
-				dir         = "dir --color=auto";
-				vdir        = "vdir --color=auto";
-				grep        = "grep --color=auto";
-				jctl        = "journalctl -p 3 -xb";
 			};
 		};
 

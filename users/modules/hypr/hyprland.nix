@@ -9,6 +9,11 @@ in
 			default = cfg.enable;
 			description = "Hyprland preset";
 		};
+		profile = lib.mkOption {
+			type = lib.types.str;
+      default = "";
+			description = "Name of profile used to select profile specific configuration";
+		};
 	};
 
 	config = lib.mkIf cfg.hyprland.enable {
@@ -24,6 +29,7 @@ in
 			source = ./hyprland;
 			recursive = true;
 		}; 
+    home.file."${config.home.homeDirectory}/.config/hypr/profile.lua".text = "return '${lib.toLower cfg.profile}'";
 
 		systemd.user.targets.hyprland-ready = {
 			Unit = {

@@ -2,18 +2,11 @@
 ---- MONITORS ----
 ------------------
 
-hl.monitor({
-    output   = "eDP-1",
-    mode     = "preferred",
-    position = "auto",
-    scale    = "1",
-})
-
 local samsung = "desc:Samsung Electric Company Odyssey G81SF HNBYA00610"
 hl.monitor({
     output   = samsung,
     mode     = "3840x2160@240",
-    position = "auto",
+    position = "0x0",
     scale    = "1.2",
     bitdepth = 10,
 })
@@ -22,7 +15,7 @@ local lg = "desc:LG Electronics LG FULL HD 0x01010101"
 hl.monitor({
     output   = lg,
     mode     = "1920x1080@74.97",
-    position = "auto",
+    position = "auto-right",
     scale    = "1",
     bitdepth = 10,
 })

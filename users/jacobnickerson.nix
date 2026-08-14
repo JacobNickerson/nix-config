@@ -60,6 +60,7 @@ in {
 			fcitx5.enable = true;
 			git.enable = true;
 			hypr.enable = true;
+      hypr.profile = hostname;
 			mpvpaper.enable = true;
 			neovim.enable = true;
 			nix-helper.enable = true;

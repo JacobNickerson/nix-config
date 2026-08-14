@@ -62,6 +62,11 @@
         hostConfig = ./configs/portajake.nix;
         users = [ (import ./users/jacobnickerson.nix { hostname = "PortaJake"; }) ];
       };
+      TVJake = mkHost {
+        hostname = "TVJake";
+        hostConfig = ./configs/tvjake.nix;
+        users = [ (import ./users/jacobnickerson.nix { hostname = "TVJake"; }) ];
+      };
     };
   };
 }

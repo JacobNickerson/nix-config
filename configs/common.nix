@@ -1,25 +1,5 @@
 { config, pkgs, ... }:
 {
-  ### MY MODULES ###
-  myModules = {
-    android-tools.enable = true; 
-    fcitx5.enable = true; 
-    gaming.enable = true;
-    hyprland.enable = true;
-    hyprland.UWSM = true;
-    iphone-tools.enable = true;
-    libvirt.enable = true;
-    limine = {
-      enable = true;
-      timeout = 600;
-      useSecureboot = true;
-    };
-    nas.enable = true;
-    nas.server_address = "192.168.5.88";
-    sddm-lake.enable = true;
-  };
-  ##################
-
   ### BOOTLOADER ###
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -31,19 +11,12 @@
     ];
     initrd.systemd.enable = true;
   };
-  #################
 
   ### WIRELESS NETWORKING ###
   networking.wireless.enable = false;
   networking.wireless.iwd.enable = true;
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  hardware.xpadneo.enable = true;
-  ###########################
 
   ### TIMEZONE AND LOCALE ###
   time.timeZone = "America/New_York";
@@ -59,17 +32,10 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-  ###########################
 
   environment.systemPackages = with pkgs; [
     vim
     git
-    alacritty
-    firefox
-    zip
-    unzip
-    btop
-    yazi
     psmisc
     brightnessctl
     fzf
@@ -78,14 +44,12 @@
     pavucontrol
     pulseaudio
     python3
-    rar
-    compsize
+    p7zip
   ];
 
   ### WAYLAND SESSION AND PORTALS ###
   services.dbus.enable = true;
   security.polkit.enable = true;
-  ###################################
 
   ### FONTS ###
   fonts.packages = with pkgs; [
@@ -97,7 +61,6 @@
     font-awesome
   ];
   fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans" ];
-  #############
 
   ### ENVIRONMENT VARIABLES ### 
   environment.sessionVariables = {
@@ -110,11 +73,9 @@
     EDITOR = "vim";
     VISUAL = "vim";
   };
-  #############################
 
   ### STATE VERSION ###
   system.stateVersion = "26.05";
-  #####################
 
   ### MISCELLANEOUS ###
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -129,14 +90,4 @@
     audio.enable = true;
     pulse.enable = true;
   };
-
-  services.flatpak = {
-    enable = true;
-  };
-
-  programs.fish.enable = true;
-  programs.nix-ld.enable = true;
-  environment.pathsToLink = [ "/share/zsh" ];  # NOTE: Required for zsh completion of system programs
-                                               # TODO: Find a way to include this with the zsh module
-  ####################
 }

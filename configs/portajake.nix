@@ -6,7 +6,26 @@
   ];
   ### MY MODULES ###
   myModules = {
+    android-tools.enable = true;
+    fcitx5.enable = true;
+    gaming.enable = true;
+    hyprland = {
+      enable = true;
+      UWSM = true;
+    };
     intel-gpu.enable = true;
+    iphone-tools.enable = true;
+    libvirt.enable = true;
+    limine = {
+      enable = true;
+      timeout = 600;
+      useSecureboot = true;
+    };
+    nas = {
+      enable = true;
+      server_address = "nas.knitnet.org";
+    };
+    sddm-lake.enable = true;
     wg-client = {
       enable = true;
       address = "10.100.0.2/32";
@@ -15,7 +34,6 @@
       use_split_tunnel = true;
     };
   };
-  ##################
 
   ### BATTERY SETTINGS ###
   services.power-profiles-daemon.enable = true;
@@ -23,7 +41,12 @@
   boot.kernelParams = [
     "pcie_aspm=force"  # May cause instability, remove if so
   ];  
-  ########################
+
+  ### BLUETOOTH SETTINGS ###
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
 
   ### HIBERNATION SETTINGS ###
   services.logind.settings.Login = {
@@ -56,11 +79,18 @@
       }
     ];
   };
-  #############################
 
   ### FILESYSTEM OPTIONS ###
   fileSystems."/".options = [ "compress=zstd:3" "noatime" ];
   fileSystems."/home".options = [ "compress=zstd:3" "noatime" ];
   fileSystems."/swap".options = [ "nodatacow" "nodatasum" "noatime" ];
-  ##########################
+
+  ### PROGRAM SETTINGS ###
+  programs = {
+    fish.enable = true;
+    nix-ld.enable = true;
+  };
+
+  ### MISCELLANEOUS ###
+  hardware.xpadneo.enable = true;
 }

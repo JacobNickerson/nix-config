@@ -5,15 +5,43 @@
     ../hardware/nixjake.nix
   ];
 
-  ### MY MODULES ### 
+  ### MY MODULES ###
   myModules = {
     amdgpu.enable = true;
-    openssh.enable = true;
-    openssh.hostname = "NixJake";
-    sunshine.enable = true;
-    sunshine.use_cuda = false;
+    android-tools.enable = true; 
+    fcitx5.enable = true; 
+    gaming.enable = true;
+    hyprland = {
+      enable = true;
+      UWSM = true;
+    };
+    iphone-tools.enable = true;
+    libvirt.enable = true;
+    limine = {
+      enable = true;
+      timeout = 600;
+      useSecureboot = true;
+    };
+    openssh = {
+      enable = true;
+      hostname = "NixJake";
+    };
+    nas = {
+      enable = true;
+      server_address = "nas.knitnet.org";
+    };
+    sddm-lake.enable = true;
+    sunshine = {
+      enable = true;
+      use_cuda = false;
+    };
   };
-  ##################
+
+  ### BLUETOOTH SETTINGS ###
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   ### WINDOWS DUALBOOT ###
   boot.loader.limine.extraEntries = ''
@@ -24,7 +52,6 @@
   environment.systemPackages = with pkgs; [
     ntfs3g
   ];
-  #######################
 
   ### FILESYSTEM OPTIONS ###
   fileSystems."/".options = [ "compress=zstd:1" "noatime" ];
@@ -36,9 +63,14 @@
        size = 32 * 1024;
      }
   ];
-  #########################
+
+  ### PROGRAM SETTINGS ###
+  programs = {
+    fish.enable = true;
+    nix-ld.enable = true;
+  };
 
   ### MISCELLANEOUS ###
+  hardware.xpadneo.enable = true;
   services.ratbagd.enable = true;
-  #####################
 }

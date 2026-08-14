@@ -73,4 +73,7 @@
   ### MISCELLANEOUS ###
   hardware.xpadneo.enable = true;
   services.ratbagd.enable = true;
+  services.udev.packages = [
+    pkgs.qmk-udev-rules
+  ];
 }

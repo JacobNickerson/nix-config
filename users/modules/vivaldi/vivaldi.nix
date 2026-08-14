@@ -1,6 +1,9 @@
 { config, lib, ... }:
 let
 	cfg = config.myUserModules.vivaldi;
+	ublock = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
+	bitwarden = "nngceckbapebfimnlniiiahkandclblb";
+	volumeMaster = "jghecgabfgfdldnmbfkhmffcabddioke";
 in
 {
 	imports = [ ./twilight.nix ];
@@ -18,9 +21,9 @@ in
 			enable = true;
 
 			extensions = [
-				{ id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }  # UBlockOrigin
-				{ id = "nngceckbapebfimnlniiiahkandclblb"; }  # Bitwarden
-				{ id = "jghecgabfgfdldnmbfkhmffcabddioke"; }  # Volume Master
+				{ id = ublock; }
+				{ id = bitwarden; }
+				{ id = volumeMaster; }
 			];
 
 			commandLineArgs = [

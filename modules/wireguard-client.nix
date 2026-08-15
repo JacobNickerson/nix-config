@@ -1,3 +1,7 @@
+/*
+Allows multiple wireguard interfaces to be defined with automatic sops-nix setup.
+Given an interface name "interface", a sops secret must be declared "wireguard/interface".
+*/
 { config, lib, ... }:
 let
   cfg = config.myModules.wg-clients;
@@ -50,12 +54,17 @@ in
       };
     };
   };
-  config = lib.mkIf (cfg.interfaces != {}) {
+  config = lib.mkIf (cfg != {}) {
+    sops.secrets = lib.mapAttrs' (name: _: {
+      name = "wireguard/${name}";
+      value = {};
+    }) cfg;
+
     networking.wg-quick.interfaces = lib.mapAttrs' (name: iface: {
       name = name;
       value = {
         generatePrivateKeyFile = true;
-        privateKeyFile = "/etc/wireguard/keys/${name}.key";
+        privateKeyFile = config.sops.secrets."wireguard/${name}".path;
         autostart = iface.autostart;
 
         dns = iface.dns;

@@ -1,5 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, self, ... }:
 {
+  ### MY MODULES ###
+  myModules = {
+    sops-nix = {
+      enable = true;
+      defaultSopsFile = "${self}/secrets";
+    };
+  };
+
   ### BOOTLOADER ###
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;

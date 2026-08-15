@@ -7,9 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
   let
     system = "x86_64-linux";
 
@@ -28,11 +32,15 @@
     mkHost = { hostname, hostConfig, users ? [] }:
       nixpkgs.lib.nixosSystem {
         inherit system pkgs;
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          inherit self;
+        };
         modules = [
           ({ ... }: { networking.hostName = hostname; })
           hostConfig
           systemModule
+          sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

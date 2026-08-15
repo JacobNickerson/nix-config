@@ -40,7 +40,7 @@ in
         };
       };
     }));
-    default = [];
+    default = {};
     description = "Wireguard interfaces to configure";
     example = {
       wg0 = {

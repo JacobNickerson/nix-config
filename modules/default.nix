@@ -14,6 +14,7 @@
 		./nvidia.nix
 		./openssh.nix
 		./sddm-lake/sddm-lake.nix
+		./sops.nix
 		./sunshine.nix
 		./virtual-display/virtual-display.nix
 		./wireguard-client.nix

@@ -26,12 +26,14 @@
       server_address = "nas.knitnet.org";
     };
     sddm-lake.enable = true;
-    wg-client = {
-      enable = true;
-      address = "10.100.0.2/32";
+    wg-clients.wg0 = {
+      autostart = true;
       server_endpoint = "47.199.149.116:42167";
       server_public_key = "XA1BWBzT694ogVhG1Ry6MQ4l8OrXuObfr00BcSvfLxs=";
+      device_address = "10.100.0.2/32";
+      dns = [ "10.100.0.1" ];
       use_split_tunnel = true;
+      split_tunnel_routes = [ "192.168.5.0/24" "10.100.0.0/24" ];
     };
   };
 

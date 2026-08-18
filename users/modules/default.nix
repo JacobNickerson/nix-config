@@ -10,6 +10,7 @@
 		./fish.nix
 		./git.nix
 		./hypr/hypr.nix
+		./mcp.nix
 		./mpvpaper/mpvpaper.nix
 		./neovim.nix
 		./nix-helper.nix

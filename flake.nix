@@ -21,9 +21,6 @@
       inherit system;
       config.allowUnfree = true;
       overlays = [ ];
-      config.permittedInsecurePackages = [
-        "pnpm-10.29.2"
-      ];
     };
 
     systemModule = import ./modules;

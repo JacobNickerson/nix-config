@@ -19,8 +19,8 @@ in {
 			stateVersion = "26.05"; 
 
 			packages = with pkgs; [
-        eza
-        firefox
+				eza
+				firefox
 				heroic
 				lsfg-vk
 				lsfg-vk-ui
@@ -28,7 +28,7 @@ in {
 				neo
 				piper
 				playerctl
-        yazi
+				yazi
 			];
 
 			sessionVariables = {
@@ -60,11 +60,12 @@ in {
 			fcitx5.enable = true;
 			git.enable = true;
 			hypr.enable = true;
-      hypr.profile = hostname;
+			hypr.profile = hostname;
 			mpvpaper.enable = true;
 			neovim.enable = true;
 			nix-helper.enable = true;
 			nix-helper.flake_path = "${home_dir}/nix-config"; 
+			opencode.enable = true;
 			openssh.enable = true;
 			openssh.hostname = hostname;
 			rbw.enable = true;

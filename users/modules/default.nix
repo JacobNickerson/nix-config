@@ -13,6 +13,7 @@
 		./mpvpaper/mpvpaper.nix
 		./neovim.nix
 		./nix-helper.nix
+		./opencode.nix
 		./openssh/openssh.nix
 		./rbw.nix
 		./tmux.nix

@@ -15,7 +15,7 @@
 		./neovim.nix
 		./nix-helper.nix
 		./opencode.nix
-		./openssh/openssh.nix
+		./openssh.nix
 		./rbw.nix
 		./tmux.nix
 		./vesktop/vesktop.nix

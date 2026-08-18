@@ -21,13 +21,8 @@ in
 					models = {
 						"Qwen3.5-9B-Q6_K" = {
 							name = "Qwen3.5 9B";
-							# capabilities = {
-							# 	tools = true;
-							# 	input = [ "text" ];
-							# 	output = [ "text" ];
-							# };
 							limit = {
-								context = 32768;
+								context = 56576;
 								output = 8192;
 							};
 						};

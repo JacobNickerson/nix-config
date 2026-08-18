@@ -61,6 +61,10 @@ in {
 			git.enable = true;
 			hypr.enable = true;
 			hypr.profile = hostname;
+			mcp = {
+				searxng.enable = true;
+				mcp-nixos.enable = true;
+			};
 			mpvpaper.enable = true;
 			neovim.enable = true;
 			nix-helper.enable = true;

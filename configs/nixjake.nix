@@ -7,10 +7,10 @@
 
   ### MY MODULES ###
   myModules = {
-    amdgpu.enable = true;
     android-tools.enable = true; 
     fcitx5.enable = true; 
     gaming.enable = true;
+    gpu.amdgpu.enable = true;
     hyprland = {
       enable = true;
       UWSM = true;

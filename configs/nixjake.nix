@@ -71,6 +71,7 @@
   };
 
   ### MISCELLANEOUS ###
+  networking.interfaces.enp16s0.wakeOnLan.enable = true;
   hardware.xpadneo.enable = true;
   services.ratbagd.enable = true;
   services.udev.packages = [

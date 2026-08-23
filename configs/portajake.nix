@@ -13,7 +13,7 @@
       enable = true;
       UWSM = true;
     };
-    intel-gpu.enable = true;
+    gpu.intel.enable = true;
     iphone-tools.enable = true;
     libvirt.enable = true;
     limine = {

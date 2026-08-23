@@ -5,17 +5,42 @@ let
 in
 {
   options.myModules.gpu = {
-    nvidia.enable = lib.mkEnableOption "Enable Nvidia GPU drivers";
-    nvidia.powerLimit = lib.mkOption {
-      type = lib.types.nullOr lib.types.int;
-      description = "Set Nvidia GPU power limit in watts (50-450W)";
-      default = null;
+    nvidia = lib.mkOption {
+      type = lib.types.submodule {
+        options = {
+          enable = lib.mkEnableOption "Enable Nvidia GPU drivers";
+          powerLimit = lib.mkOption {
+            type = lib.types.nullOr lib.types.int;
+            description = "Set Nvidia GPU power limit in watts (50-450W)";
+            default = null;
+          };
+        };
+      };
+      default = {};
+      description = "Nvidia GPU settings";
     };
-    amdgpu.enable = lib.mkEnableOption "Enable AMD GPU drivers";
-	intel-gpu.enable = lib.mkEnableOption "Enable Intel GPU drivers";
+    amdgpu = lib.mkOption {
+      type = lib.types.submodule {
+        options = {
+          enable = lib.mkEnableOption "Enable AMD GPU drivers";
+        };
+      };
+      default = {};
+      description = "AMD GPU settings";
+    };
+    intel = lib.mkOption {
+      type = lib.types.submodule {
+        options = {
+          enable = lib.mkEnableOption "Enable Intel GPU drivers";
+        };
+      };
+      default = {};
+      description = "Intel GPU settings";
+    };
   };
+
   config = lib.mkMerge [
-    (lib.mkIf (cfg.nvidia.enable || cfg.amdgpu.enable) {
+    (lib.mkIf (builtins.any (gpu: gpu.enable) (builtins.attrValues cfg)) {
       hardware.graphics = {
         enable = true;
         enable32Bit = true;
@@ -67,19 +92,19 @@ in
       services.xserver.videoDrivers = lib.mkAfter [ "amdgpu" ];
       boot.initrd.kernelModules = [ "amdgpu" ];
       boot.kernelParams = [
-		"amdgpu.ppfeaturemask=0xffffffff"
+        "amdgpu.ppfeaturemask=0xffffffff"
       ];  
       services.lact.enable = true;
     })
 
-	(lib.mkIf cfg.intel-gpu.enable {
-		hardware.graphics.extraPackages = with pkgs; [
-			intel-media-driver
-			vpl-gpu-rt
-		];
-		environment.sessionVariables = {
-			LIBVA_DRIVER_NAME = "iHD";
-		};
-	})
+    (lib.mkIf cfg.intel.enable {
+      hardware.graphics.extraPackages = with pkgs; [
+        intel-media-driver
+        vpl-gpu-rt
+      ];
+      environment.sessionVariables = {
+        LIBVA_DRIVER_NAME = "iHD";
+      };
+    })
   ];
 }

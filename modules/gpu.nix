@@ -59,7 +59,9 @@ in
       boot.kernelParams = [
         "nvidia.NVreg_PreserveVideoMemoryAllocations=1"  # May cause instability, remove if so
       ]; 
-    } // lib.mkIf (cfg.nvidia.enable && cfg.nvidia.powerLimit != null) {
+    })
+
+    (lib.mkIf (cfg.nvidia.enable && cfg.nvidia.powerLimit != null) {
       assertions = lib.mkAfter [
         {
           assertion = (cfg.nvidia.powerLimit >= 50 && cfg.nvidia.powerLimit <= 450);

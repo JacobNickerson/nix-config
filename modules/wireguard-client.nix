@@ -63,7 +63,6 @@ in
     networking.wg-quick.interfaces = lib.mapAttrs' (name: iface: {
       name = name;
       value = {
-        generatePrivateKeyFile = true;
         privateKeyFile = config.sops.secrets."wireguard/${name}".path;
         autostart = iface.autostart;
 

@@ -22,13 +22,20 @@ in
 						"Qwen3.5-9B-Q6_K" = {
 							name = "Qwen3.5 9B";
 							limit = {
-								context = 56576;
-								output = 8192;
+								context = 131072;
+								output = 4096;
+							};
+						};
+						"Qwen3.8-27B-UD-Q4_K_XL" = {
+							name = "Qwen3.8 27B";
+							limit = {
+								context = 90000;
+								output = 4096;
 							};
 						};
 					};
 				};
-				model = "llama.cpp/Qwen3.5-9B-Q6_K";
+				model = "llama.cpp/Qwen3.8-27B-UD-Q4_K_XL";
 			};
 			skills = {};
 			tools = {};

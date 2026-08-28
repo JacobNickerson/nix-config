@@ -28,6 +28,35 @@ hl.monitor({
     disabled = true,
 })
 
+------------------
+---- KEYBINDS ----
+------------------
+
+local is_virt_enabled = false
+local VIRT_MONITOR = "VIRTUAL"
+local mainMod = "SUPER"
+hl.bind(mainMod .. " + SHIFT + slash", function ()
+    is_virt_enabled = not is_virt_enabled
+    if is_virt_enabled then
+        hl.exec_cmd(string.format("hyprctl output create headless %s",VIRT_MONITOR))
+    else
+        hl.exec_cmd(string.format("hyprctl output destroy %s",VIRT_MONITOR))
+    end
+    hl.monitor({
+        output = VIRT_MONITOR,
+        disabled = not is_virt_enabled,
+    })
+
+    hl.monitor({
+        output   = samsung,
+        disabled = is_virt_enabled,
+    })
+    hl.monitor({
+        output   = lg,
+        disabled = is_virt_enabled,
+    })
+end)
+
 -------------------------
 ---- WORKSPACE RULES ----
 -------------------------

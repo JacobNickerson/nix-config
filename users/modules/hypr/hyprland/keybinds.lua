@@ -17,25 +17,6 @@ hl.bind(mainMod .. " + apostrophe", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch \"hl.dsp.dpms({ action = 'off' })\""))
 hl.bind(mainMod .. " + CTRL + L", hl.dsp.exec_cmd("sleep 0.5 && hyprctl dispatch \"hl.dsp.dpms({ action = 'off' })\" && hyprlock"))
 
-local is_virt_enabled = false
-local VIRT_MONITOR = "VIRTUAL"
-hl.bind(mainMod .. " + SHIFT + slash", function ()
-    is_virt_enabled = not is_virt_enabled
-    if is_virt_enabled then
-        hl.exec_cmd(string.format("hyprctl output create headless %s",VIRT_MONITOR))
-    else
-        hl.exec_cmd(string.format("hyprctl output destroy %s",VIRT_MONITOR))
-    end
-    hl.monitor({
-        output = VIRT_MONITOR,
-        disabled = not is_virt_enabled,
-    })
-    hl.monitor({
-        output   = "desc:Samsung Electric Company Odyssey G81SF HNBYA00610",
-        disabled = is_virt_enabled,
-    })
-end)
-
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -z -m region"))
 

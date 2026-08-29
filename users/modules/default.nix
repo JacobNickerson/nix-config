@@ -17,6 +17,7 @@
 		./opencode.nix
 		./openssh.nix
 		./rbw.nix
+		./sops.nix
 		./tmux.nix
 		./vesktop/vesktop.nix
 		./vivaldi/vivaldi.nix

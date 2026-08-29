@@ -51,7 +51,11 @@ in {
 		};
 
 		myUserModules = {
-			aerc.enable = true;
+			aerc = {
+				enable = true;
+				accounts.personal.enable = true;
+				accounts.personal.isPrimary = true;
+			};
 			alacritty.enable = true;
 			btop.enable = true;
 			cli-tools.enable = true;
@@ -73,6 +77,7 @@ in {
 			openssh.enable = true;
 			openssh.hostname = hostname;
 			rbw.enable = true;
+			sops-nix.enable = true;
 			tmux.enable = true;
 			vesktop.enable = true;
 			vivaldi.enable = true;

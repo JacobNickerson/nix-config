@@ -42,8 +42,11 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; hostname = hostname; };
-            home-manager.sharedModules = [ userModule ];
+            home-manager.extraSpecialArgs = { inherit inputs; inherit self; hostname = hostname; };
+            home-manager.sharedModules = [
+              userModule
+              inputs.sops-nix.homeManagerModules.sops
+            ];
           }
         ] ++ users;
       };  

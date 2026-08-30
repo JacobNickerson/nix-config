@@ -1,2 +1,13 @@
+keys:
+  - &system age17juzqpf2zhzs4ln4mtm3f7cavczahk0s93adf0gt6lfdx8y55fcssv7g7l
+  - &jacobnickerson age1yjvyxx33kjgt9qgvmah2gns42atm3waf6g9fewmjy9hpuyr494lq5s565m
+
+
 creation_rules:
-  - age: age17juzqpf2zhzs4ln4mtm3f7cavczahk0s93adf0gt6lfdx8y55fcssv7g7l
+  - path_regex: secrets/system\.yaml$
+    age:
+      - *system
+
+  - path_regex: secrets/jacobnickerson\.yaml$
+    age:
+      - *jacobnickerson

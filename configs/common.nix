@@ -4,7 +4,7 @@
   myModules = {
     sops-nix = {
       enable = true;
-      defaultSopsFile = "${self}/secrets.yaml";
+      defaultSopsFile = "${self}/secrets/system.yaml";
     };
   };
 

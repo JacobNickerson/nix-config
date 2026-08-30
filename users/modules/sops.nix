@@ -13,16 +13,20 @@ in
   options.myUserModules.sops-nix = {
     enable = lib.mkEnableOption "sops-nix secret management";
 
+    defaultSopsFile = lib.mkOption {
+      type = lib.types.path;
+      description = "Path to the default sops file for a specific user";
+    };
+
     ageKeyFile = lib.mkOption {
       type = lib.types.str;
-      default = "/var/lib/sops-nix/key";
       description = "Path to the age key used to decrypt SOPS secrets";
     };
   };
 
   config = lib.mkIf cfg.enable {
     sops = {
-      defaultSopsFile = "${self}/secrets.yaml";
+      defaultSopsFile = cfg.defaultSopsFile;
       age = {
         keyFile = cfg.ageKeyFile;
         generateKey = true;

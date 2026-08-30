@@ -1,5 +1,5 @@
 { hostname }:
-{ inputs, config, pkgs, ... }: let
+{ inputs, config, pkgs, self, ... }: let
   user_name = "jacobnickerson";
 	home_dir = "/home/${user_name}";
 in {
@@ -77,7 +77,11 @@ in {
 			openssh.enable = true;
 			openssh.hostname = hostname;
 			rbw.enable = true;
-			sops-nix.enable = true;
+			sops-nix = {
+				enable = true;
+				defaultSopsFile = "${self}/secrets/jacobnickerson.yaml";
+				ageKeyFile = "${home_dir}/.config/sops/key";
+			};
 			tmux.enable = true;
 			vesktop.enable = true;
 			vivaldi.enable = true;

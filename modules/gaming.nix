@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.myModules.gaming;
 in
@@ -22,9 +27,11 @@ in
       steam = {
         enable = true;
         package = pkgs.steam.override {
-          extraPkgs = (pkgs: with pkgs; [
-            gamemode
-          ]);
+          extraPkgs = (
+            pkgs: with pkgs; [
+              gamemode
+            ]
+          );
         };
       };
     };

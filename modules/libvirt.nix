@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.myModules.libvirt;
 in
@@ -10,7 +15,7 @@ in
       default = false;
       description = "Allow virbr0 as a trusted interface for bridge networking";
     };
-  }; 
+  };
 
   config = lib.mkIf cfg.enable {
     programs.virt-manager.enable = true;

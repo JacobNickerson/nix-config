@@ -1,5 +1,5 @@
 { pkgs, ... }:
 {
-	pixelon = pkgs.callPackage ./font.nix {};
-	lake = pkgs.callPackage ./theme.nix {};
+  pixelon = pkgs.callPackage ./font.nix { };
+  lake = pkgs.callPackage ./theme.nix { };
 }

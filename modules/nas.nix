@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.myModules.nas;
 in
@@ -12,8 +17,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    sops.secrets."nas/username" = {};
-    sops.secrets."nas/password" = {};
+    sops.secrets."nas/username" = { };
+    sops.secrets."nas/password" = { };
     sops.templates."smb.env" = {
       content = ''
         username=${config.sops.placeholder."nas/username"}
@@ -30,7 +35,7 @@ in
       device = "//${cfg.server_address}/gubb-storage";
       fsType = "cifs";
       options = [
-        "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users"  # Prevent hanging when not able to connect
+        "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users" # Prevent hanging when not able to connect
         "credentials=${config.sops.templates."smb.env".path}"
         "vers=3.1.1"
         "posix,unix,noperm"

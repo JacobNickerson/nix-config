@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./common.nix
@@ -33,7 +38,10 @@
       device_address = "10.100.0.2/32";
       dns = [ "10.100.0.1" ];
       use_split_tunnel = true;
-      split_tunnel_routes = [ "192.168.5.0/24" "10.100.0.0/24" ];
+      split_tunnel_routes = [
+        "192.168.5.0/24"
+        "10.100.0.0/24"
+      ];
     };
   };
 
@@ -41,8 +49,8 @@
   services.power-profiles-daemon.enable = true;
   powerManagement.powertop.enable = true;
   boot.kernelParams = [
-    "pcie_aspm=force"  # May cause instability, remove if so
-  ];  
+    "pcie_aspm=force" # May cause instability, remove if so
+  ];
 
   ### BLUETOOTH SETTINGS ###
   hardware.bluetooth = {
@@ -55,7 +63,7 @@
     HandleLidSwitch = "suspend-then-hibernate";
     HandleLidSwitchDocked = "suspend-then-hibernate";
   };
-  systemd.sleep.settings.Sleep = { 
+  systemd.sleep.settings.Sleep = {
     SuspendState = "mem";
     HibernateMode = "platform";
     HibernateDelaySec = "60min";
@@ -63,7 +71,7 @@
   swapDevices = lib.mkForce [
     {
       device = "/swap/swapfile";
-      size = 20 * 1024; 
+      size = 20 * 1024;
     }
   ];
 
@@ -83,9 +91,19 @@
   };
 
   ### FILESYSTEM OPTIONS ###
-  fileSystems."/".options = [ "compress=zstd:3" "noatime" ];
-  fileSystems."/home".options = [ "compress=zstd:3" "noatime" ];
-  fileSystems."/swap".options = [ "nodatacow" "nodatasum" "noatime" ];
+  fileSystems."/".options = [
+    "compress=zstd:3"
+    "noatime"
+  ];
+  fileSystems."/home".options = [
+    "compress=zstd:3"
+    "noatime"
+  ];
+  fileSystems."/swap".options = [
+    "nodatacow"
+    "nodatasum"
+    "noatime"
+  ];
 
   ### PROGRAM SETTINGS ###
   programs = {

@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./common.nix
@@ -7,8 +12,8 @@
 
   ### MY MODULES ###
   myModules = {
-    android-tools.enable = true; 
-    fcitx5.enable = true; 
+    android-tools.enable = true;
+    fcitx5.enable = true;
     gaming.enable = true;
     gpu.amdgpu.enable = true;
     hyprland = {
@@ -54,14 +59,24 @@
   ];
 
   ### FILESYSTEM OPTIONS ###
-  fileSystems."/".options = [ "compress=zstd:1" "noatime" ];
-  fileSystems."/home".options = [ "compress=zstd:1" "noatime" ];
-  fileSystems."/swap".options = [ "compress=no" "nodatacow" "noatime" ];
+  fileSystems."/".options = [
+    "compress=zstd:1"
+    "noatime"
+  ];
+  fileSystems."/home".options = [
+    "compress=zstd:1"
+    "noatime"
+  ];
+  fileSystems."/swap".options = [
+    "compress=no"
+    "nodatacow"
+    "noatime"
+  ];
   swapDevices = lib.mkForce [
-     {
-       device = "/swap/swapfile";
-       size = 32 * 1024;
-     }
+    {
+      device = "/swap/swapfile";
+      size = 32 * 1024;
+    }
   ];
 
   ### PROGRAM SETTINGS ###

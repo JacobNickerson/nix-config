@@ -1,4 +1,9 @@
-{ config, pkgs, self, ... }:
+{
+  config,
+  pkgs,
+  self,
+  ...
+}:
 {
   ### MY MODULES ###
   myModules = {
@@ -70,7 +75,7 @@
   ];
   fonts.fontconfig.defaultFonts.sansSerif = [ "Noto Sans" ];
 
-  ### ENVIRONMENT VARIABLES ### 
+  ### ENVIRONMENT VARIABLES ###
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "0";
     NIXOS_OZONE_WL = "1";
@@ -86,7 +91,10 @@
   system.stateVersion = "26.05";
 
   ### MISCELLANEOUS ###
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   services.xserver.xkb = {
     layout = "us";

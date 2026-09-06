@@ -1,11 +1,17 @@
 /*
-SOPS-Nix module
+  SOPS-Nix module
 
-SOPS-Nix requires additional imperative configuration to be set up. If no age key file
-exists one will be created, but then its public key must be added to .sops.yaml. Then,
-an encrypted secrets file must be created with sops and added to the repository.
+  SOPS-Nix requires additional imperative configuration to be set up. If no age key file
+  exists one will be created, but then its public key must be added to .sops.yaml. Then,
+  an encrypted secrets file must be created with sops and added to the repository.
 */
-{ config, lib, pkgs, self, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  self,
+  ...
+}:
 let
   cfg = config.myUserModules.sops-nix;
 in

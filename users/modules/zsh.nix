@@ -16,7 +16,10 @@ in
         enable = true;
 
         highlight = "fg=#666666";
-        strategy = [ "history" "completion" ];
+        strategy = [
+          "history"
+          "completion"
+        ];
       };
 
       syntaxHighlighting = {

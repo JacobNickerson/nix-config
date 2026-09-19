@@ -79,6 +79,14 @@
     }
   ];
 
+  ### ENCRYPTION SETTINGS ###
+  boot.initrd.luks.devices."luks-40c54ba6-1e66-4927-8f0c-5d2f72439a51" = {
+    allowDiscards = true;
+    keyFile = "/dev/disk/by-id/usb-USB_SanDisk_3.2Gen1_09019a5e5acc84e4bcd17988e327611fca7502cfb58741d831c7c64f038a1543ea3c000000000000000000005dda0f7100855f208155810721b08242-0:0";
+    keyFileSize = 4096;
+    keyFileTimeout = 5;
+  };
+
   ### PROGRAM SETTINGS ###
   programs = {
     fish.enable = true;

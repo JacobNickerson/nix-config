@@ -56,7 +56,6 @@ in
           history = 10000;
           multiplier = 3;
         };
-        terminal.shell.program = "tmux";
       };
     };
   };

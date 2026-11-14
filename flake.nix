@@ -11,6 +11,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    metrolist = {
+      url = "github:MetrolistGroup/Metrolist";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

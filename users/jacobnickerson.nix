@@ -9,6 +9,7 @@
 let
   user_name = "jacobnickerson";
   home_dir = "/home/${user_name}";
+  metrolist = inputs.metrolist.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   config.users.users.jacobnickerson = {
@@ -37,6 +38,7 @@ in
         heroic
         lsfg-vk
         lsfg-vk-ui
+        metrolist
         moonlight-qt
         neo
         piper

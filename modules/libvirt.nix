@@ -21,6 +21,7 @@ in
     programs.virt-manager.enable = true;
     virtualisation.libvirtd = {
       enable = true;
+      qemu.swtpm.enable = true;
     };
     networking.firewall.trustedInterfaces = lib.mkIf cfg.use_bridge [ "virbr0" ];
   };
